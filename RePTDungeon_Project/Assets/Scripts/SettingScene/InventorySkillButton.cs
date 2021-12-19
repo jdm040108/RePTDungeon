@@ -72,10 +72,8 @@ public class InventorySkillButton : MonoBehaviour
                     }
 
                     manager.SkillButtonLayout[manager.curButton].thisSkill = thisWeapon;
-                    manager.selectedLayout.thisInventory = this;
-                    manager.selectedLayout.thisSkill = this.thisWeapon;
-                    manager.selectedLayout.State = 1;
-                    manager.selectedLayout.SetImage();
+
+                    SetLayoutButton(manager.selectedLayout);
                     thisLayout = manager.selectedLayout;
                     manager.selectedLayout = null;
                     state = 2;
@@ -86,6 +84,14 @@ public class InventorySkillButton : MonoBehaviour
             }
         }
         SetImage();
+    }
+
+    void SetLayoutButton(SkillLayoutButton selectedLayout)
+    {
+        selectedLayout.thisInventory = this;
+        selectedLayout.thisSkill = thisWeapon;
+        selectedLayout.State = 1;
+        selectedLayout.SetImage();
     }
 
     void DestroyLayoutSkill()

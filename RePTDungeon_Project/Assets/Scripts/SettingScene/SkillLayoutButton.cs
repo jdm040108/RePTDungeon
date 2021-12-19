@@ -57,35 +57,42 @@ public class SkillLayoutButton : MonoBehaviour
                 uiManager.selectedLayout = this;
                 break;
             case 1:
-                thisSkill = uiManager.selectedWeapon;
-                uiManager.skillTouchState = 0;
-                uiManager.curButton = -1;
+                SetThisSkill(uiManager.selectedWeapon);
                 State = 1;
                 SetImage();
                 uiManager.selectedInventory.thisLayout = this;
-                uiManager.selectedLayout = null;
-                uiManager.selectedInventory = null;
+                uiManager.SetNull();
                 break;
             case 2:
                 if (uiManager.SkillButtonLayout[uiManager.curButton] != this)
                 {
-                    State = 0;
-                    uiManager.skillTouchState = 2;
-                    uiManager.curButton = n;
-                    uiManager.SetSkillImage();
-                    uiManager.selectedLayout = this;
+                    InitialThisState(2);
                 }
                 else
                 {
-                    State = 0;
-                    uiManager.skillTouchState = 0;
-                    uiManager.curButton = -1;
-                    uiManager.SetSkillImage();
-                    uiManager.selectedLayout = null;
+                    InitialThisState(0);
                 }
                 break;
             default:
                 break;
         }
+    }
+
+
+
+    void SetThisSkill(SettingWeapon _skill)
+    {
+        thisSkill = _skill;
+        uiManager.skillTouchState = 0;
+        uiManager.curButton = -1;
+    }
+
+    void InitialThisState(int _touchState)
+    {
+        State = 0;
+        uiManager.skillTouchState = _touchState;
+        uiManager.curButton = -1;
+        uiManager.SetSkillImage();
+        uiManager.selectedLayout = null;
     }
 }

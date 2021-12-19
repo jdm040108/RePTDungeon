@@ -86,4 +86,10 @@ public class SettingUIManager : Singleton<SettingUIManager>
         }
     }
 
+    public void SetNull()
+    {
+        selectedLayout = null;
+        selectedInventory = null;
+    }
+
 }
