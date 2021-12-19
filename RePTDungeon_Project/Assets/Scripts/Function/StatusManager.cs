@@ -5,14 +5,20 @@ using System.IO;
 
 public class StatusManager : Singleton<StatusManager>
 {
-    public string path;
-    public List<SettingWeapon> skills = new List<SettingWeapon>();
+    public string itemSave_path;
+    public string layoutSave_path;
+
     public List<InventorySkillButton> skillButtons = new List<InventorySkillButton>();
+    public List<int> skillLayout_index = new List<int>();
+    public List<SettingWeapon> weapon_index = new List<SettingWeapon>();
     SkillSaveClass thisSave;
+
+
 
     void Start()
     {
-        path = Application.persistentDataPath + "./Skills_Level.json";
+        itemSave_path = Application.persistentDataPath + "./Skills_Level.json";
+        layoutSave_path = Application.persistentDataPath + "./Layout.json";
     }
 
     void Update()
@@ -22,13 +28,13 @@ public class StatusManager : Singleton<StatusManager>
 
     public void LoadItem()
     {
-        path = Application.persistentDataPath + "./Skills_Level.json";
+        itemSave_path = Application.persistentDataPath + "./Skills_Level.json";
         thisSave = new SkillSaveClass();
 
-        if (File.Exists(path))
+        if (File.Exists(itemSave_path))
         {
-            thisSave.Load(path);
-            for (int i = 0; i < skills.Count; i++)
+            thisSave.Load(itemSave_path);
+            for (int i = 0; i < skillButtons.Count; i++)
             {
                 skillButtons[i].state = thisSave.SkillsState[i];
             }
@@ -42,7 +48,7 @@ public class StatusManager : Singleton<StatusManager>
     private void OnDestroy()
     {
         thisSave.SetData(skillButtons);
-        thisSave.Save(path);
+        thisSave.Save(itemSave_path);
     }
 }
 
@@ -93,4 +99,10 @@ public class SkillSaveClass
 
         return this;
     }
+}
+
+[System.Serializable]
+public class SkillLayoutSave
+{
+
 }

@@ -39,12 +39,15 @@ public class SettingUIManager : Singleton<SettingUIManager>
     void Start()
     {
         commonSkills.Clear();
-        foreach (var item in StatusManager.Instance.skills)
+        int idx = 0;
+        foreach (var item in StatusManager.Instance.weapon_index)
         {
             commonSkills.Add(item);
             InventorySkillButton I_temp = Instantiate(buttonPrefab, SkillsScroll[0].content.transform);
             StatusManager.Instance.skillButtons.Add(I_temp);
             I_temp.thisWeapon = item;
+            I_temp.index = idx;
+            idx++;
         }
         StatusManager.Instance.LoadItem();
 

@@ -51,8 +51,6 @@ public class SkillLayoutButton : MonoBehaviour
 
                 thisSkill = null;
                 uiManager.skillTouchState = 2;
-                uiManager.curButton = n;
-                uiManager.SetSkillImage();
                 SetImage();
                 uiManager.selectedLayout = this;
                 break;
@@ -76,6 +74,8 @@ public class SkillLayoutButton : MonoBehaviour
             default:
                 break;
         }
+        uiManager.curButton = n;
+        uiManager.SetSkillImage();
     }
 
 

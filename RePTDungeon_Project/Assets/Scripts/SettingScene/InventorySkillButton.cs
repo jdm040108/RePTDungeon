@@ -11,6 +11,7 @@ public class InventorySkillButton : MonoBehaviour
     public int state; //0: locked, 1: unlocked, 2: setted
     int touchState;
     Image image;
+    public int index;
 
     public SkillLayoutButton thisLayout;
 
@@ -43,10 +44,13 @@ public class InventorySkillButton : MonoBehaviour
                     {
                         DestroyLayoutSkill();
                     }
-                    manager.skillTouchState = 1;
-                    manager.selectedWeapon = thisWeapon;
-                    state = 2;
-                    manager.selectedInventory = this;
+                    else
+                    {
+                        manager.skillTouchState = 1;
+                        manager.selectedWeapon = thisWeapon;
+                        state = 2;
+                        manager.selectedInventory = this;
+                    }
                     break;
                 case 1:
                     if (manager.selectedWeapon != this.thisWeapon)
@@ -66,7 +70,7 @@ public class InventorySkillButton : MonoBehaviour
                     break;
                 case 2:
 
-                    if(thisLayout != null)
+                    if (thisLayout != null)
                     {
                         DestroyLayoutSkill();
                     }
@@ -99,5 +103,8 @@ public class InventorySkillButton : MonoBehaviour
         thisLayout.thisSkill = null;
         thisLayout.State = 0;
         thisLayout.SetImage();
+
+        state = 1;
+        SetImage();
     }
 }
