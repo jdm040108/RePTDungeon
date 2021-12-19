@@ -38,38 +38,60 @@ public class InventorySkillButton : MonoBehaviour
             switch (touchState)
             {
                 case 0:
+
+                    if (state == 2)
+                    {
+                        DestroyLayoutSkill();
+                    }
                     manager.skillTouchState = 1;
                     manager.selectedWeapon = thisWeapon;
                     state = 2;
                     manager.selectedInventory = this;
                     break;
                 case 1:
-                    if(manager.selectedWeapon != this.thisWeapon)
+                    if (manager.selectedWeapon != this.thisWeapon)
                     {
                         manager.skillTouchState = 0;
                         manager.selectedWeapon = this.thisWeapon;
                         manager.selectedInventory = this;
-                        state = 1;
                     }
                     else
                     {
                         manager.skillTouchState = 0;
-                        state = 0;
                         manager.selectedWeapon = null;
                         manager.selectedInventory = null;
                     }
+                    state = 1;
                     SetImage();
                     break;
                 case 2:
+
+                    if(thisLayout != null)
+                    {
+                        DestroyLayoutSkill();
+                    }
+
                     manager.SkillButtonLayout[manager.curButton].thisSkill = thisWeapon;
                     manager.selectedLayout.thisInventory = this;
+                    manager.selectedLayout.thisSkill = this.thisWeapon;
+                    manager.selectedLayout.State = 1;
+                    manager.selectedLayout.SetImage();
+                    thisLayout = manager.selectedLayout;
                     manager.selectedLayout = null;
                     state = 2;
+                    manager.skillTouchState = 0;
                     break;
                 default:
                     break;
             }
         }
         SetImage();
+    }
+
+    void DestroyLayoutSkill()
+    {
+        thisLayout.thisSkill = null;
+        thisLayout.State = 0;
+        thisLayout.SetImage();
     }
 }

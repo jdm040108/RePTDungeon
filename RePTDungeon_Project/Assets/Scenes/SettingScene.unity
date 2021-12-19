@@ -176,7 +176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   thisSkill: {fileID: 0}
-  noSkill: {fileID: 0}
+  noSkill: {fileID: 21300000, guid: bc39a2e39dd11fc4fbae223484617a66, type: 3}
+  thisInventory: {fileID: 0}
 --- !u!114 &75990673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1155,7 +1156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   thisSkill: {fileID: 0}
-  noSkill: {fileID: 0}
+  noSkill: {fileID: 21300000, guid: bc39a2e39dd11fc4fbae223484617a66, type: 3}
+  thisInventory: {fileID: 0}
 --- !u!114 &517486753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1594,7 +1596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100.640015, y: -97}
+  m_AnchoredPosition: {x: 100.64014, y: -97}
   m_SizeDelta: {x: 128.19, y: 128.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &698885879
@@ -1732,7 +1734,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   thisSkill: {fileID: 0}
-  noSkill: {fileID: 0}
+  noSkill: {fileID: 21300000, guid: bc39a2e39dd11fc4fbae223484617a66, type: 3}
+  thisInventory: {fileID: 0}
 --- !u!114 &705044529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1870,7 +1873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -310.48}
+  m_AnchoredPosition: {x: 0, y: -310.47998}
   m_SizeDelta: {x: 1700, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &707311632
@@ -2077,6 +2080,8 @@ MonoBehaviour:
   - {fileID: 357696829}
   - {fileID: 633359114}
   selectedWeapon: {fileID: 0}
+  selectedInventory: {fileID: 0}
+  selectedLayout: {fileID: 0}
   skillTouchState: 0
   SkillButtonLayout:
   - {fileID: 957329551}
@@ -2593,7 +2598,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   thisSkill: {fileID: 0}
-  noSkill: {fileID: 0}
+  noSkill: {fileID: 21300000, guid: bc39a2e39dd11fc4fbae223484617a66, type: 3}
+  thisInventory: {fileID: 0}
 --- !u!1 &969471460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2894,7 +2900,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   thisSkill: {fileID: 0}
-  noSkill: {fileID: 0}
+  noSkill: {fileID: 21300000, guid: bc39a2e39dd11fc4fbae223484617a66, type: 3}
+  thisInventory: {fileID: 0}
 --- !u!114 &1167505093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4179,7 +4186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   thisSkill: {fileID: 0}
-  noSkill: {fileID: 0}
+  noSkill: {fileID: 21300000, guid: bc39a2e39dd11fc4fbae223484617a66, type: 3}
+  thisInventory: {fileID: 0}
 --- !u!114 &1850685491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4417,7 +4425,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   thisSkill: {fileID: 0}
-  noSkill: {fileID: 0}
+  noSkill: {fileID: 21300000, guid: bc39a2e39dd11fc4fbae223484617a66, type: 3}
+  thisInventory: {fileID: 0}
 --- !u!114 &1933805972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4565,7 +4574,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   thisSkill: {fileID: 0}
-  noSkill: {fileID: 0}
+  noSkill: {fileID: 21300000, guid: bc39a2e39dd11fc4fbae223484617a66, type: 3}
+  thisInventory: {fileID: 0}
 --- !u!114 &1948757584
 MonoBehaviour:
   m_ObjectHideFlags: 0

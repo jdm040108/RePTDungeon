@@ -10,10 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b89f31bbaa83a2b49a3faaa716d67c94, type: 3}
-  m_Name: TestSkill_1
+  m_Name: TestSkill_2
   m_EditorClassIdentifier: 
-  State: 1
-  StateSprite:
-  - {fileID: 21300000, guid: 5cb21b1c2cdc096489800f8095e8151a, type: 3}
-  - {fileID: 21300000, guid: c7b9cce30ae3e1d49bb2ed4ba1b8bb35, type: 3}
-  - {fileID: 21300000, guid: e57a564fa794b23449854f2811b2c359, type: 3}
+  State: 0
+  StateSprite: []

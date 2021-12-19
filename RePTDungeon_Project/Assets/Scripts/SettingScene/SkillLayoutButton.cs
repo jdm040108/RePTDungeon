@@ -19,6 +19,7 @@ public class SkillLayoutButton : MonoBehaviour
     {
         icon = GetComponent<Image>();
         uiManager = SettingUIManager.Instance;
+        SetImage();
     }
 
     void Update()
@@ -61,7 +62,9 @@ public class SkillLayoutButton : MonoBehaviour
                 uiManager.curButton = -1;
                 State = 1;
                 SetImage();
+                uiManager.selectedInventory.thisLayout = this;
                 uiManager.selectedLayout = null;
+                uiManager.selectedInventory = null;
                 break;
             case 2:
                 if (uiManager.SkillButtonLayout[uiManager.curButton] != this)
