@@ -2338,8 +2338,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fbfeb3d056d9445b5ed2927ff74912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skills:
+  itemSave_path: 
+  layoutSave_path: 
+  skillButtons: []
+  skillLayout_index: 
+  weapon_index:
   - {fileID: 11400000, guid: 1ce7aa3688170b349b8341afadc4f2cc, type: 2}
+  - {fileID: 11400000, guid: 8d7e6f0b6f490174791ebc508cfbe425, type: 2}
 --- !u!1 &857668593
 GameObject:
   m_ObjectHideFlags: 0
