@@ -43,8 +43,10 @@ public class SettingUIManager : Singleton<SettingUIManager>
         {
             commonSkills.Add(item);
             InventorySkillButton I_temp = Instantiate(buttonPrefab, SkillsScroll[0].content.transform);
+            StatusManager.Instance.skillButtons.Add(I_temp);
             I_temp.thisWeapon = item;
         }
+        StatusManager.Instance.LoadItem();
 
         SetSkillLayout(0);
         thisSkillImage.gameObject.SetActive(false);
