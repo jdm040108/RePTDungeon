@@ -6,95 +6,118 @@ using UnityEngine.UI;
 public class SettingUIManager : Singleton<SettingUIManager>
 {
 
-    [Header("Status")]
-    public List<SettingWeapon> commonSkills = new List<SettingWeapon>();
-    public List<SettingWeapon> rareSkills = new List<SettingWeapon>();
-    public List<SettingWeapon> veryRareSkills = new List<SettingWeapon>();
-    public List<SettingWeapon> SuperSkills = new List<SettingWeapon>();
-    public InventorySkillButton buttonPrefab;
-    int layoutCount;
+    [Header("Layout")]
+    public List<SkillLayoutButton> LayoutButton = new List<SkillLayoutButton>();
 
-    [Header("Skill Button Image")]
-    public Button[] skillButtons;
-    public Sprite[] IdleSprites;
-    public Sprite[] SelectedSprites;
+    [Header("Item")]
+    public List<SettingWeapon> Skill_Common;
+    public List<SettingWeapon> Skill_Rare;
+    public List<SettingWeapon> Skill_VeryRare;
+    public List<SettingWeapon> Skill_Super;
 
-    [Header("Skill Setting")]
-    public ScrollRect[] SkillsScroll;
-    public SettingWeapon selectedWeapon;
-    public InventorySkillButton selectedInventory;
-    public SkillLayoutButton selectedLayout;
-    public int skillTouchState; // 0: nothing, 1: skill selected, 2: skill button selected
+    [Header("Scroll Rect")]
+    [SerializeField] ScrollRect[] SkillScroll;
 
-    [Header("Setting Skill Button")]
-    public SkillLayoutButton[] SkillButtonLayout;
-    public GameObject thisSkillImage;
-    public int curButton;
+    [Header("ScrollRect Buttons")]
+    [SerializeField] Button[] SkillScroll_Button;
+    [SerializeField] Sprite[] SkillScroll_Button_IdleSprite;
+    [SerializeField] Sprite[] SkillScroll_Button_SelectedSprite;
 
-    protected override void Awake()
+    [Header("Inventory Select")]
+    [SerializeField] int _touch_state;
+    public int touch_state //0: unselected, 1: selected
     {
-        layoutCount = SkillsScroll.Length;
-    }
-
-    void Start()
-    {
-        commonSkills.Clear();
-        int idx = 0;
-        foreach (var item in StatusManager.Instance.weapon_index)
+        get => _touch_state;
+        set
         {
-            commonSkills.Add(item);
-            InventorySkillButton I_temp = Instantiate(buttonPrefab, SkillsScroll[0].content.transform);
-            StatusManager.Instance.skillButtons.Add(I_temp);
-            I_temp.thisWeapon = item;
-            I_temp.index = idx;
-            idx++;
-        }
-        StatusManager.Instance.LoadItem();
-
-        SetSkillLayout(0);
-        thisSkillImage.gameObject.SetActive(false);
-        curButton = -1;
-    }
-
-    void Update()
-    {
-
-    }
-
-    public void SetSkillLayout(int n)
-    {
-        for (int i = 0; i < layoutCount; i++)
-        {
-            skillButtons[i].image.sprite = IdleSprites[i];
-            SkillsScroll[i].gameObject.SetActive(false);
-        }
-
-        skillButtons[n].image.sprite = SelectedSprites[n];
-        SkillsScroll[n].gameObject.SetActive(true);
-    }
-
-    public void SetLayoutButton(int n)
-    {
-
-    }
-
-    public void SetSkillImage()
-    {
-        if (curButton >= 0)
-        {
-            thisSkillImage.gameObject.SetActive(true);
-            thisSkillImage.transform.position = SkillButtonLayout[curButton].transform.position;
-        }
-        else
-        {
-            thisSkillImage.gameObject.SetActive(false);
+            _touch_state = value;
         }
     }
 
-    public void SetNull()
+    [Header("Current Selected")]
+    public SkillLayoutButton currentLayout;
+    public InventorySkillButton currentInventory;
+
+    [Header("Inventory")]
+    public InventorySkillButton Inventory_Prefab;
+    public List<InventorySkillButton> Inventory_Layout_Buttons_Common = new List<InventorySkillButton>();
+    public List<InventorySkillButton> Inventory_Layout_Buttons_Rare = new List<InventorySkillButton>();
+    public List<InventorySkillButton> Inventory_Layout_Buttons_VeryRare = new List<InventorySkillButton>();
+    public List<InventorySkillButton> Inventory_Layout_Buttons_Super = new List<InventorySkillButton>();
+
+    private void Start()
     {
-        selectedLayout = null;
-        selectedInventory = null;
+        SetScrollRect(0);
     }
 
+    private void Update()
+    {
+
+    }
+
+    public void SetInventoryLayout()
+    {
+        int index = 0;
+
+        Inventory_Layout_Buttons_Common.Clear();
+        for (int i = 0; i < Inventory_Layout_Buttons_Common.Count; i++)
+        {
+            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[0].transform);
+            I_temp.index = index;
+            Inventory_Layout_Buttons_Common.Add(I_temp);
+            Inventory_Layout_Buttons_Common[i].thisWeapon = Skill_Common[i];
+            index++;
+        }
+
+        Inventory_Layout_Buttons_Rare.Clear();
+        for (int i = 0; i < Inventory_Layout_Buttons_Rare.Count; i++)
+        {
+            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[1].transform);
+            I_temp.index = index;
+            Inventory_Layout_Buttons_Rare.Add(I_temp);
+            Inventory_Layout_Buttons_Rare[i].thisWeapon = Skill_Rare[i];
+            index++;
+        }
+
+        Inventory_Layout_Buttons_VeryRare.Clear();
+        for (int i = 0; i < Inventory_Layout_Buttons_VeryRare.Count; i++)
+        {
+            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[2].transform);
+            I_temp.index = index;
+            Inventory_Layout_Buttons_VeryRare.Add(I_temp);
+            Inventory_Layout_Buttons_VeryRare[i].thisWeapon = Skill_VeryRare[i];
+            index++;
+        }
+
+        Inventory_Layout_Buttons_Super.Clear();
+        for (int i = 0; i < Inventory_Layout_Buttons_Super.Count; i++)
+        {
+            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[2].transform);
+            I_temp.index = index;
+            Inventory_Layout_Buttons_Super.Add(I_temp);
+            Inventory_Layout_Buttons_Super[i].thisWeapon = Skill_Super[i];
+            index++;
+        }
+    }
+
+    /// <summary>
+    /// 0: touch non, 1: touch able
+    /// </summary>
+    /// <param name="n"></param>
+    public void SetTouchValue(int n)
+    {
+        touch_state = n;
+    }
+
+    public void SetScrollRect(int n)
+    {
+        for (int i = 0; i < SkillScroll.Length; i++)
+        {
+            SkillScroll[i].gameObject.SetActive(false);
+            SkillScroll_Button[i].image.sprite = SkillScroll_Button_IdleSprite[i];
+        }
+
+        SkillScroll[n].gameObject.SetActive(true);
+        SkillScroll_Button[n].image.sprite = SkillScroll_Button_SelectedSprite[n];
+    }
 }

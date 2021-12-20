@@ -5,94 +5,48 @@ using UnityEngine.UI;
 
 public class SkillLayoutButton : MonoBehaviour
 {
-    public int State; // 0: no skill available, 1: skill available
-    public SettingWeapon thisSkill;
-    public Sprite noSkill;
-    Image icon;
+    Button thisButton;
+    public int state = 0;
+    InventorySkillButton thisInventory;
+    SettingWeapon thisWeapon;
 
-    SettingUIManager uiManager;
-    int touchState;
+    [SerializeField] Sprite noneSprite;
 
-    public InventorySkillButton thisInventory;
-
-    void Start()
+    private void Start()
     {
-        icon = GetComponent<Image>();
-        uiManager = SettingUIManager.Instance;
-        SetImage();
-    }
-
-    void Update()
-    {
-        touchState = uiManager.skillTouchState;
+        thisButton = GetComponent<Button>();
     }
 
     public void SetImage()
     {
-        switch (State)
+        switch (state)
         {
             case 0:
-                icon.sprite = noSkill;
+                thisButton.image.sprite = noneSprite;
                 break;
             case 1:
-                icon.sprite = thisSkill.StateSprite[1];
+                thisButton.image.sprite = thisWeapon.StateSprite[2];
                 break;
             default:
                 break;
         }
     }
 
-    public void TouchThis(int n)
+    public void AddLayout()
     {
-        switch (touchState)
-        {
-            case 0:
-                State = 0;
-
-                thisSkill = null;
-                uiManager.skillTouchState = 2;
-                SetImage();
-                uiManager.selectedLayout = this;
-                break;
-            case 1:
-                SetThisSkill(uiManager.selectedWeapon);
-                State = 1;
-                SetImage();
-                uiManager.selectedInventory.thisLayout = this;
-                uiManager.SetNull();
-                break;
-            case 2:
-                if (uiManager.SkillButtonLayout[uiManager.curButton] != this)
-                {
-                    InitialThisState(2);
-                }
-                else
-                {
-                    InitialThisState(0);
-                }
-                break;
-            default:
-                break;
-        }
-        uiManager.curButton = n;
-        uiManager.SetSkillImage();
+        SettingUIManager.Instance.currentLayout = this;
+        SettingUIManager.Instance.SetTouchValue(1);
     }
 
-
-
-    void SetThisSkill(SettingWeapon _skill)
+    public void SetNull()
     {
-        thisSkill = _skill;
-        uiManager.skillTouchState = 0;
-        uiManager.curButton = -1;
+        thisWeapon = null;
+        thisInventory = null;
     }
 
-    void InitialThisState(int _touchState)
+    public void SetThisButtonSkill(InventorySkillButton _thisInventory)
     {
-        State = 0;
-        uiManager.skillTouchState = _touchState;
-        uiManager.curButton = -1;
-        uiManager.SetSkillImage();
-        uiManager.selectedLayout = null;
+        thisInventory = _thisInventory;
+        thisWeapon = _thisInventory.thisWeapon;
     }
 }
