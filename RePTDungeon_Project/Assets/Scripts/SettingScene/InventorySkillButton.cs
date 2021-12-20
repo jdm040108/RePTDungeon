@@ -5,9 +5,24 @@ using UnityEngine.UI;
 
 public class InventorySkillButton : MonoBehaviour
 {
+
+    Button thisButton;
+
     public SettingWeapon thisWeapon;
     public SkillLayoutButton thisLayout;
     public int index;
+
+    public int state;
+
+    private void Start()
+    {
+        thisButton = GetComponent<Button>();
+    }
+
+    public void SetImage()
+    {
+        thisButton.image.sprite = thisWeapon.StateSprite[state];
+    }
 
     public void SetLayoutWeapon()
     {
@@ -24,5 +39,7 @@ public class InventorySkillButton : MonoBehaviour
 
             SettingUIManager.Instance.touch_state = 0;
         }
+
+        SetImage();
     }
 }

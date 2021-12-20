@@ -45,6 +45,9 @@ public class SettingUIManager : Singleton<SettingUIManager>
     public List<InventorySkillButton> Inventory_Layout_Buttons_VeryRare = new List<InventorySkillButton>();
     public List<InventorySkillButton> Inventory_Layout_Buttons_Super = new List<InventorySkillButton>();
 
+    [Header("Setting")]
+    [SerializeField] GameObject InventoryLayout;
+
     private void Start()
     {
         SetScrollRect(0);
@@ -52,7 +55,17 @@ public class SettingUIManager : Singleton<SettingUIManager>
 
     private void Update()
     {
-
+        switch (_touch_state)
+        {
+            case 0:
+                InventoryLayout.SetActive(false);
+                break;
+            case 1:
+                InventoryLayout.SetActive(true);
+                break;
+            default:
+                break;
+        }
     }
 
     public void SetInventoryLayout()

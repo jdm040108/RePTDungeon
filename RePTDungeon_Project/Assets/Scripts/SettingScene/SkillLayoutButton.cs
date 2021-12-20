@@ -40,13 +40,15 @@ public class SkillLayoutButton : MonoBehaviour
 
     public void SetNull()
     {
+        thisInventory.thisLayout = null;
+
         thisWeapon = null;
         thisInventory = null;
     }
 
     public void SetThisButtonSkill(InventorySkillButton _thisInventory)
     {
-        thisInventory = _thisInventory;
+        thisInventory.thisLayout = this;
         thisWeapon = _thisInventory.thisWeapon;
     }
 }
