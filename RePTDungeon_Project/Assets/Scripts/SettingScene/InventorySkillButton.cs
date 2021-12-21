@@ -57,5 +57,7 @@ public class InventorySkillButton : MonoBehaviour
         }
 
         SetImage();
+
+        SettingUIManager.Instance.SetLayoutIndex();
     }
 }

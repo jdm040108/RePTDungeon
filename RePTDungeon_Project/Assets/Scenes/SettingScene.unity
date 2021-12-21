@@ -1974,6 +1974,7 @@ MonoBehaviour:
   Inventory_Layout_Buttons_Rare: []
   Inventory_Layout_Buttons_VeryRare: []
   Inventory_Layout_Buttons_Super: []
+  Inventory_Layout_Buttons: []
   InventoryLayout: {fileID: 2127649495}
   cur_Layout_Object: {fileID: 1551081128}
 --- !u!1 &742923919
@@ -2220,6 +2221,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fbfeb3d056d9445b5ed2927ff74912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusPath: 
+  Layout_Index: 
+  Inventory_Status_Index: 
+  Weapon_Common:
+  - {fileID: 11400000, guid: 1ce7aa3688170b349b8341afadc4f2cc, type: 2}
+  - {fileID: 11400000, guid: 8d7e6f0b6f490174791ebc508cfbe425, type: 2}
+  - {fileID: 11400000, guid: cd0d687f6ac218a469d1ef2b01d86d8e, type: 2}
+  Weapon_Rare:
+  - {fileID: 11400000, guid: 8d7e6f0b6f490174791ebc508cfbe425, type: 2}
+  Weapon_VeryRare:
+  - {fileID: 11400000, guid: 1ce7aa3688170b349b8341afadc4f2cc, type: 2}
+  Weapon_Super:
+  - {fileID: 11400000, guid: cd0d687f6ac218a469d1ef2b01d86d8e, type: 2}
 --- !u!1 &850620177
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SettingUIManager : Singleton<SettingUIManager>
 {
+    StatusManager statusManager;
 
     [Header("Layout")]
     public List<SkillLayoutButton> LayoutButton = new List<SkillLayoutButton>();
@@ -46,6 +48,8 @@ public class SettingUIManager : Singleton<SettingUIManager>
     public List<InventorySkillButton> Inventory_Layout_Buttons_VeryRare = new List<InventorySkillButton>();
     public List<InventorySkillButton> Inventory_Layout_Buttons_Super = new List<InventorySkillButton>();
 
+    public List<InventorySkillButton> Inventory_Layout_Buttons = new List<InventorySkillButton>();
+
     [Header("Setting")]
     [SerializeField] GameObject InventoryLayout;
     [SerializeField] GameObject cur_Layout_Object;
@@ -57,6 +61,7 @@ public class SettingUIManager : Singleton<SettingUIManager>
 
     private void Start()
     {
+        InitializeInventoryLayout();
         SetInventoryLayout();
         SetScrollRect(0);
     }
@@ -79,51 +84,111 @@ public class SettingUIManager : Singleton<SettingUIManager>
         }
     }
 
+    void InitializeInventoryLayout()
+    {
+        statusManager = StatusManager.Instance;
+
+        Skill_Common.Clear();
+        foreach (var item in statusManager.Weapon_Common)
+        {
+            Skill_Common.Add(item);
+        }
+
+        Skill_Rare.Clear();
+        foreach (var item in statusManager.Weapon_Rare)
+        {
+            Skill_Rare.Add(item);
+        }
+
+        Skill_VeryRare.Clear();
+        foreach (var item in statusManager.Weapon_VeryRare)
+        {
+            Skill_VeryRare.Add(item);
+        }
+
+        Skill_Super.Clear();
+        foreach (var item in statusManager.Weapon_Super)
+        {
+            Skill_Super.Add(item);
+        }
+    }
+
     public void SetInventoryLayout()
     {
         int index = 0;
+
+        if(!File.Exists(statusManager.statusPath))
+        {
+            statusManager.InitialIndexSize();
+        }
+
+        Inventory_Layout_Buttons.Clear();
 
         Inventory_Layout_Buttons_Common.Clear();
         for (int i = 0; i < Skill_Common.Count; i++)
         {
             InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[0].content.transform);
 
-            I_temp.state = 1;
+            I_temp.state = statusManager.Inventory_Status_Index[index];
             I_temp.SetValue(index, Skill_Common[i]);
             Inventory_Layout_Buttons_Common.Add(I_temp);
-
+            Inventory_Layout_Buttons.Add(I_temp);
 
             index++;
         }
 
         Inventory_Layout_Buttons_Rare.Clear();
-        for (int i = 0; i < Inventory_Layout_Buttons_Rare.Count; i++)
+        for (int i = 0; i < Skill_Rare.Count; i++)
         {
             InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[1].content.transform);
-            I_temp.index = index;
+
+            I_temp.state = statusManager.Inventory_Status_Index[index];
+            I_temp.SetValue(index, Skill_Rare[i]);
             Inventory_Layout_Buttons_Rare.Add(I_temp);
-            Inventory_Layout_Buttons_Rare[i].thisWeapon = Skill_Rare[i];
+            Inventory_Layout_Buttons.Add(I_temp);
+
             index++;
         }
 
         Inventory_Layout_Buttons_VeryRare.Clear();
-        for (int i = 0; i < Inventory_Layout_Buttons_VeryRare.Count; i++)
+        for (int i = 0; i < Skill_VeryRare.Count; i++)
         {
             InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[2].content.transform);
-            I_temp.index = index;
+
+            I_temp.state = statusManager.Inventory_Status_Index[index];
+            I_temp.SetValue(index, Skill_VeryRare[i]);
             Inventory_Layout_Buttons_VeryRare.Add(I_temp);
-            Inventory_Layout_Buttons_VeryRare[i].thisWeapon = Skill_VeryRare[i];
+            Inventory_Layout_Buttons.Add(I_temp);
+
             index++;
         }
 
         Inventory_Layout_Buttons_Super.Clear();
-        for (int i = 0; i < Inventory_Layout_Buttons_Super.Count; i++)
+        for (int i = 0; i < Skill_Super.Count; i++)
         {
-            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[2].content.transform);
-            I_temp.index = index;
+            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[3].content.transform);
+
+            I_temp.state = statusManager.Inventory_Status_Index[index];
+            I_temp.SetValue(index, Skill_Super[i]);
             Inventory_Layout_Buttons_Super.Add(I_temp);
-            Inventory_Layout_Buttons_Super[i].thisWeapon = Skill_Super[i];
+            Inventory_Layout_Buttons.Add(I_temp);
+
             index++;
+        }
+    }
+
+    public void SetLayoutIndex()
+    {
+        statusManager.Layout_Index.Clear();
+        foreach (var item in LayoutButton)
+        {
+            statusManager.Layout_Index.Add(item.state);
+        }
+
+        statusManager.Inventory_Status_Index.Clear();
+        foreach (var item in Inventory_Layout_Buttons)
+        {
+            statusManager.Inventory_Status_Index.Add(item.state);
         }
     }
 
