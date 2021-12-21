@@ -8,6 +8,7 @@ public class SettingUIManager : Singleton<SettingUIManager>
 
     [Header("Layout")]
     public List<SkillLayoutButton> LayoutButton = new List<SkillLayoutButton>();
+    public int cur_layout_index;
 
     [Header("Item")]
     public List<SettingWeapon> Skill_Common;
@@ -47,6 +48,7 @@ public class SettingUIManager : Singleton<SettingUIManager>
 
     [Header("Setting")]
     [SerializeField] GameObject InventoryLayout;
+    [SerializeField] GameObject cur_Layout_Object;
 
     protected override void Awake()
     {
@@ -65,9 +67,12 @@ public class SettingUIManager : Singleton<SettingUIManager>
         {
             case 0:
                 InventoryLayout.SetActive(false);
+                cur_Layout_Object.SetActive(false);
                 break;
             case 1:
                 InventoryLayout.SetActive(true);
+                cur_Layout_Object.SetActive(true);
+                cur_Layout_Object.transform.position = LayoutButton[cur_layout_index].transform.position;
                 break;
             default:
                 break;
@@ -82,11 +87,12 @@ public class SettingUIManager : Singleton<SettingUIManager>
         for (int i = 0; i < Skill_Common.Count; i++)
         {
             InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[0].content.transform);
-            I_temp.thisWeapon = Skill_Common[i];
-            I_temp.index = index;
-            I_temp.SetImage();
+
+            I_temp.state = 1;
+            I_temp.SetValue(index, Skill_Common[i]);
             Inventory_Layout_Buttons_Common.Add(I_temp);
-            Inventory_Layout_Buttons_Common[i].thisWeapon = Skill_Common[i];
+
+
             index++;
         }
 
@@ -140,5 +146,11 @@ public class SettingUIManager : Singleton<SettingUIManager>
 
         SkillScroll[n].gameObject.SetActive(true);
         SkillScroll_Button[n].image.sprite = SkillScroll_Button_SelectedSprite[n];
+
+    }
+
+    public void SelectLayout(int n)
+    {
+        cur_layout_index = n;
     }
 }

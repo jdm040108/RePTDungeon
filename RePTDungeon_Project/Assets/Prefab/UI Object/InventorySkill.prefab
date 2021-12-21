@@ -123,7 +123,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7423754226821753289}
         m_TargetAssemblyTypeName: InventorySkillButton, Assembly-CSharp
-        m_MethodName: TouchThis
+        m_MethodName: SetLayoutWeapon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -146,4 +146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisWeapon: {fileID: 0}
+  thisLayout: {fileID: 0}
+  index: 0
   state: 0

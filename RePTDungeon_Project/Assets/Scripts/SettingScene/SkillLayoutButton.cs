@@ -6,15 +6,24 @@ using UnityEngine.UI;
 public class SkillLayoutButton : MonoBehaviour
 {
     Button thisButton;
+    Image thisImage;
     public int state = 0;
-    InventorySkillButton thisInventory;
-    SettingWeapon thisWeapon;
+    [SerializeField]InventorySkillButton thisInventory;
+    [SerializeField] SettingWeapon thisWeapon;
 
     [SerializeField] Sprite noneSprite;
 
     private void Start()
     {
         thisButton = GetComponent<Button>();
+        thisImage = GetComponent<Image>();
+        SetImage();
+    }
+
+    private void Update()
+    {
+        state = thisWeapon != null ? 1 : 0;
+        SetImage();
     }
 
     public void SetImage()
@@ -22,10 +31,10 @@ public class SkillLayoutButton : MonoBehaviour
         switch (state)
         {
             case 0:
-                thisButton.image.sprite = noneSprite;
+                thisImage.sprite = noneSprite;
                 break;
             case 1:
-                thisButton.image.sprite = thisWeapon.StateSprite[2];
+                thisImage.sprite = thisWeapon.StateSprite[2];
                 break;
             default:
                 break;
@@ -50,7 +59,19 @@ public class SkillLayoutButton : MonoBehaviour
 
     public void SetThisButtonSkill(InventorySkillButton _thisInventory)
     {
-        thisInventory.thisLayout = this;
+
+        if (thisInventory != null)
+        {
+            thisInventory.SetNull();
+            thisInventory = null;
+        }
+
+        thisInventory = _thisInventory;
+        thisInventory.state = 2;
         thisWeapon = _thisInventory.thisWeapon;
+
+        thisInventory.thisLayout = this.GetComponent<SkillLayoutButton>();
+
+        SetImage();
     }
 }
