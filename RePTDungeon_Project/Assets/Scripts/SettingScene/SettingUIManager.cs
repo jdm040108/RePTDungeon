@@ -22,7 +22,7 @@ public class SettingUIManager : Singleton<SettingUIManager>
     [SerializeField] Button[] SkillScroll_Button;
     [SerializeField] Sprite[] SkillScroll_Button_IdleSprite;
     [SerializeField] Sprite[] SkillScroll_Button_SelectedSprite;
-
+  
     [Header("Inventory Select")]
     [SerializeField] int _touch_state;
     public int touch_state //0: unselected, 1: selected
@@ -48,8 +48,14 @@ public class SettingUIManager : Singleton<SettingUIManager>
     [Header("Setting")]
     [SerializeField] GameObject InventoryLayout;
 
+    protected override void Awake()
+    {
+        
+    }
+
     private void Start()
     {
+        SetInventoryLayout();
         SetScrollRect(0);
     }
 
@@ -73,10 +79,12 @@ public class SettingUIManager : Singleton<SettingUIManager>
         int index = 0;
 
         Inventory_Layout_Buttons_Common.Clear();
-        for (int i = 0; i < Inventory_Layout_Buttons_Common.Count; i++)
+        for (int i = 0; i < Skill_Common.Count; i++)
         {
-            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[0].transform);
+            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[0].content.transform);
+            I_temp.thisWeapon = Skill_Common[i];
             I_temp.index = index;
+            I_temp.SetImage();
             Inventory_Layout_Buttons_Common.Add(I_temp);
             Inventory_Layout_Buttons_Common[i].thisWeapon = Skill_Common[i];
             index++;
@@ -85,7 +93,7 @@ public class SettingUIManager : Singleton<SettingUIManager>
         Inventory_Layout_Buttons_Rare.Clear();
         for (int i = 0; i < Inventory_Layout_Buttons_Rare.Count; i++)
         {
-            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[1].transform);
+            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[1].content.transform);
             I_temp.index = index;
             Inventory_Layout_Buttons_Rare.Add(I_temp);
             Inventory_Layout_Buttons_Rare[i].thisWeapon = Skill_Rare[i];
@@ -95,7 +103,7 @@ public class SettingUIManager : Singleton<SettingUIManager>
         Inventory_Layout_Buttons_VeryRare.Clear();
         for (int i = 0; i < Inventory_Layout_Buttons_VeryRare.Count; i++)
         {
-            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[2].transform);
+            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[2].content.transform);
             I_temp.index = index;
             Inventory_Layout_Buttons_VeryRare.Add(I_temp);
             Inventory_Layout_Buttons_VeryRare[i].thisWeapon = Skill_VeryRare[i];
@@ -105,7 +113,7 @@ public class SettingUIManager : Singleton<SettingUIManager>
         Inventory_Layout_Buttons_Super.Clear();
         for (int i = 0; i < Inventory_Layout_Buttons_Super.Count; i++)
         {
-            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[2].transform);
+            InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[2].content.transform);
             I_temp.index = index;
             Inventory_Layout_Buttons_Super.Add(I_temp);
             Inventory_Layout_Buttons_Super[i].thisWeapon = Skill_Super[i];

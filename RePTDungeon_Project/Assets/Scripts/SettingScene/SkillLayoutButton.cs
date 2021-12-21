@@ -34,6 +34,8 @@ public class SkillLayoutButton : MonoBehaviour
 
     public void AddLayout()
     {
+        SettingUIManager.Instance.SetScrollRect(0);
+
         SettingUIManager.Instance.currentLayout = this;
         SettingUIManager.Instance.SetTouchValue(1);
     }
