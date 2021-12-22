@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89f31bbaa83a2b49a3faaa716d67c94, type: 3}
+  m_Name: TestSkill_12
+  m_EditorClassIdentifier: 
+  State: 0
+  StateSprite:
+  - {fileID: 21300000, guid: cf0b47678bafd4340a4deba8ef7d2aa4, type: 3}
+  - {fileID: 21300000, guid: e130b9e1550215d4caf109364076186b, type: 3}
+  - {fileID: 21300000, guid: cc80812f92221f14b8e77956b6ddb111, type: 3}
+  skill_name: 
+  skill_desc: 

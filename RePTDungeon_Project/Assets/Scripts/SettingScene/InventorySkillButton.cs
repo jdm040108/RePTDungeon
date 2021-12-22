@@ -47,7 +47,7 @@ public class InventorySkillButton : MonoBehaviour
 
     public void SetLayoutWeapon()
     {
-        if(SettingUIManager.Instance.touch_state == 1)
+        if(SettingUIManager.Instance.touch_state == 1 && state == 1)
         {
             if(thisLayout != null)
             {
@@ -59,10 +59,11 @@ public class InventorySkillButton : MonoBehaviour
             thisLayout.SetThisButtonSkill(this.GetComponent<InventorySkillButton>(), index);
 
             SettingUIManager.Instance.touch_state = 0;
+
+            SetImage();
+
+            SettingUIManager.Instance.SetLayoutIndex();
+            SettingUIManager.Instance.SetUpgradeButtonData();
         }
-
-        SetImage();
-
-        SettingUIManager.Instance.SetLayoutIndex();
     }
 }

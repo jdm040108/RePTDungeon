@@ -53,6 +53,12 @@ public class SettingUIManager : Singleton<SettingUIManager>
     [Header("Setting")]
     [SerializeField] GameObject InventoryLayout;
     [SerializeField] GameObject cur_Layout_Object;
+    [SerializeField] GameObject cur_Layout_Upgrade;
+
+    [Header("Upgrade")]
+    [SerializeField] Transform Upgrade_Layout_Transform;
+    [SerializeField] SkillUpgrade UpgradePrefab;
+    [SerializeField] List<SkillUpgrade> Upgrade_Layout = new List<SkillUpgrade>();
 
     protected override void Awake()
     {
@@ -62,11 +68,12 @@ public class SettingUIManager : Singleton<SettingUIManager>
     private void Start()
     {
         statusManager = StatusManager.Instance;
-
+        statusManager.InitLayoutIndex();
         InitializeInventoryLayout();
         SetInventoryLayout();
         SetScrollRect(0);
         InitLayout();
+        InitUpgradeButton();
     }
 
     private void Update()
@@ -75,16 +82,41 @@ public class SettingUIManager : Singleton<SettingUIManager>
         {
             case 0:
                 InventoryLayout.SetActive(false);
+                cur_Layout_Upgrade.SetActive(true);
                 cur_Layout_Object.SetActive(false);
                 break;
             case 1:
                 InventoryLayout.SetActive(true);
                 cur_Layout_Object.SetActive(true);
+                cur_Layout_Upgrade.SetActive(false);
                 cur_Layout_Object.transform.position = LayoutButton[cur_layout_index].transform.position;
                 break;
             default:
                 break;
         }
+    }
+
+    void InitUpgradeButton()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            SkillUpgrade upgrade = Instantiate(UpgradePrefab, Upgrade_Layout_Transform);
+            UpgradeButtonSetData(upgrade, Inventory_Layout_Buttons[LayoutButton[i].thisWeaponIndex].thisWeapon);
+            Upgrade_Layout.Add(upgrade);
+        }
+    }
+
+    public void SetUpgradeButtonData()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            UpgradeButtonSetData(Upgrade_Layout[i], Inventory_Layout_Buttons[LayoutButton[i].thisWeaponIndex].thisWeapon);
+        }
+    }
+
+    void UpgradeButtonSetData(SkillUpgrade _upgrade, SettingWeapon _skill)
+    {
+        _upgrade.SetData(_skill);
     }
 
     void InitLayout()
@@ -140,7 +172,6 @@ public class SettingUIManager : Singleton<SettingUIManager>
         {
             InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[0].content.transform);
 
-            I_temp.state = statusManager.Inventory_Status_Index[index];
             I_temp.SetValue(index, Skill_Common[i]);
             Inventory_Layout_Buttons_Common.Add(I_temp);
             Inventory_Layout_Buttons.Add(I_temp);
@@ -153,7 +184,6 @@ public class SettingUIManager : Singleton<SettingUIManager>
         {
             InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[1].content.transform);
 
-            I_temp.state = statusManager.Inventory_Status_Index[index];
             I_temp.SetValue(index, Skill_Rare[i]);
             Inventory_Layout_Buttons_Rare.Add(I_temp);
             Inventory_Layout_Buttons.Add(I_temp);
@@ -166,7 +196,6 @@ public class SettingUIManager : Singleton<SettingUIManager>
         {
             InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[2].content.transform);
 
-            I_temp.state = statusManager.Inventory_Status_Index[index];
             I_temp.SetValue(index, Skill_VeryRare[i]);
             Inventory_Layout_Buttons_VeryRare.Add(I_temp);
             Inventory_Layout_Buttons.Add(I_temp);
@@ -179,12 +208,17 @@ public class SettingUIManager : Singleton<SettingUIManager>
         {
             InventorySkillButton I_temp = Instantiate(Inventory_Prefab, SkillScroll[3].content.transform);
 
-            I_temp.state = statusManager.Inventory_Status_Index[index];
             I_temp.SetValue(index, Skill_Super[i]);
             Inventory_Layout_Buttons_Super.Add(I_temp);
             Inventory_Layout_Buttons.Add(I_temp);
 
             index++;
+        }
+
+
+        for (int i = 0; i < Inventory_Layout_Buttons.Count; i++)
+        {
+            Inventory_Layout_Buttons[i].state = statusManager.Inventory_Status_Index[i];
         }
     }
 

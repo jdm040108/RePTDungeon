@@ -53,6 +53,7 @@ public class StatusManager : Singleton<StatusManager>
         statusPath = Application.persistentDataPath + "./status_save_data.json";
         if(!File.Exists(statusPath))
         {
+            Debug.Log("File not exists, initlial weapon by index");
             for (int i = 0; i < 8; i++)
             {
                 Layout_Index.Add(i);
@@ -60,6 +61,7 @@ public class StatusManager : Singleton<StatusManager>
         }
         else
         {
+            Debug.Log("File exists, load weapon index");
             dataSave.Load(statusPath);
             Inventory_Status_Index.Clear();
             foreach (var item in dataSave.Inventory_State_Index)
