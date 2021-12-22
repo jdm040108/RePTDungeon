@@ -25,7 +25,7 @@ public class SettingUIManager : Singleton<SettingUIManager>
     [SerializeField] Button[] SkillScroll_Button;
     [SerializeField] Sprite[] SkillScroll_Button_IdleSprite;
     [SerializeField] Sprite[] SkillScroll_Button_SelectedSprite;
-  
+
     [Header("Inventory Select")]
     [SerializeField] int _touch_state;
     public int touch_state //0: unselected, 1: selected
@@ -56,14 +56,17 @@ public class SettingUIManager : Singleton<SettingUIManager>
 
     protected override void Awake()
     {
-        
+
     }
 
     private void Start()
     {
+        statusManager = StatusManager.Instance;
+
         InitializeInventoryLayout();
         SetInventoryLayout();
         SetScrollRect(0);
+        InitLayout();
     }
 
     private void Update()
@@ -84,9 +87,18 @@ public class SettingUIManager : Singleton<SettingUIManager>
         }
     }
 
+    void InitLayout()
+    {
+        statusManager.InitLayoutIndex();
+        for (int i = 0; i < LayoutButton.Count; i++)
+        {
+            Debug.Log("layout button set: " + i.ToString());
+            LayoutButton[i].SetThisButtonSkill(Inventory_Layout_Buttons[statusManager.Layout_Index[i]], Inventory_Layout_Buttons[statusManager.Layout_Index[i]].index);
+        }
+    }
+
     void InitializeInventoryLayout()
     {
-        statusManager = StatusManager.Instance;
 
         Skill_Common.Clear();
         foreach (var item in statusManager.Weapon_Common)
@@ -117,7 +129,7 @@ public class SettingUIManager : Singleton<SettingUIManager>
     {
         int index = 0;
 
-        if(!File.Exists(statusManager.statusPath))
+        if (!File.Exists(statusManager.statusPath))
         {
             statusManager.InitialIndexSize();
         }

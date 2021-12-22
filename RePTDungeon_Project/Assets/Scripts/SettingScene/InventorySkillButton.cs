@@ -15,6 +15,11 @@ public class InventorySkillButton : MonoBehaviour
 
     public int state;
 
+    private void Update()
+    {
+        SetImage();
+    }
+
     public void GetComponentFromThisObject()
     {
         thisButton = GetComponent<Button>();
@@ -31,7 +36,6 @@ public class InventorySkillButton : MonoBehaviour
         GetComponentFromThisObject();
         index = _index;
         thisWeapon = _thisWeapon;
-
         SetImage();
     }
 
@@ -51,7 +55,7 @@ public class InventorySkillButton : MonoBehaviour
             }
 
             thisLayout = SettingUIManager.Instance.currentLayout;
-            thisLayout.SetThisButtonSkill(this.GetComponent<InventorySkillButton>());
+            thisLayout.SetThisButtonSkill(this.GetComponent<InventorySkillButton>(), index);
 
             SettingUIManager.Instance.touch_state = 0;
         }

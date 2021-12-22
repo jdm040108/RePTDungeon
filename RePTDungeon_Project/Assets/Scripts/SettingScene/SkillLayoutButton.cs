@@ -10,14 +10,18 @@ public class SkillLayoutButton : MonoBehaviour
     public int state = 0;
     [SerializeField]InventorySkillButton thisInventory;
     [SerializeField] SettingWeapon thisWeapon;
+    public int thisWeaponIndex;
 
     [SerializeField] Sprite noneSprite;
 
     private void Start()
     {
+    }
+
+    void GetComponentLogic()
+    {
         thisButton = GetComponent<Button>();
         thisImage = GetComponent<Image>();
-        SetImage();
     }
 
     private void Update()
@@ -57,8 +61,9 @@ public class SkillLayoutButton : MonoBehaviour
         thisInventory = null;
     }
 
-    public void SetThisButtonSkill(InventorySkillButton _thisInventory)
+    public void SetThisButtonSkill(InventorySkillButton _thisInventory, int _weaponIndex)
     {
+        GetComponentLogic();
 
         if (thisInventory != null)
         {
@@ -68,9 +73,10 @@ public class SkillLayoutButton : MonoBehaviour
 
         thisInventory = _thisInventory;
         thisInventory.state = 2;
-        thisWeapon = _thisInventory.thisWeapon;
 
-        thisInventory.thisLayout = this.GetComponent<SkillLayoutButton>();
+        thisWeapon = _thisInventory.thisWeapon;
+        thisWeaponIndex = _weaponIndex;
+        thisInventory.thisLayout = GetComponent<SkillLayoutButton>();
 
         SetImage();
     }

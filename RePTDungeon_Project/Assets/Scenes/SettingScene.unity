@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1083,6 +1083,7 @@ MonoBehaviour:
   state: 0
   thisInventory: {fileID: 0}
   thisWeapon: {fileID: 0}
+  thisWeaponIndex: 0
   noneSprite: {fileID: 21300000, guid: 23f8d18bba61bde4bbdebcdb7bbf9f16, type: 3}
 --- !u!114 &583430339
 MonoBehaviour:
@@ -1708,6 +1709,7 @@ MonoBehaviour:
   state: 0
   thisInventory: {fileID: 0}
   thisWeapon: {fileID: 0}
+  thisWeaponIndex: 0
   noneSprite: {fileID: 21300000, guid: 23f8d18bba61bde4bbdebcdb7bbf9f16, type: 3}
 --- !u!114 &708443238
 MonoBehaviour:
@@ -2230,9 +2232,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cd0d687f6ac218a469d1ef2b01d86d8e, type: 2}
   Weapon_Rare:
   - {fileID: 11400000, guid: 8d7e6f0b6f490174791ebc508cfbe425, type: 2}
+  - {fileID: 11400000, guid: 8d7e6f0b6f490174791ebc508cfbe425, type: 2}
+  - {fileID: 11400000, guid: cd0d687f6ac218a469d1ef2b01d86d8e, type: 2}
   Weapon_VeryRare:
   - {fileID: 11400000, guid: 1ce7aa3688170b349b8341afadc4f2cc, type: 2}
+  - {fileID: 11400000, guid: 8d7e6f0b6f490174791ebc508cfbe425, type: 2}
+  - {fileID: 11400000, guid: cd0d687f6ac218a469d1ef2b01d86d8e, type: 2}
   Weapon_Super:
+  - {fileID: 11400000, guid: cd0d687f6ac218a469d1ef2b01d86d8e, type: 2}
+  - {fileID: 11400000, guid: 8d7e6f0b6f490174791ebc508cfbe425, type: 2}
   - {fileID: 11400000, guid: cd0d687f6ac218a469d1ef2b01d86d8e, type: 2}
 --- !u!1 &850620177
 GameObject:
@@ -2288,6 +2296,7 @@ MonoBehaviour:
   state: 0
   thisInventory: {fileID: 0}
   thisWeapon: {fileID: 0}
+  thisWeaponIndex: 0
   noneSprite: {fileID: 21300000, guid: 23f8d18bba61bde4bbdebcdb7bbf9f16, type: 3}
 --- !u!114 &850620180
 MonoBehaviour:
@@ -2666,6 +2675,7 @@ MonoBehaviour:
   state: 0
   thisInventory: {fileID: 0}
   thisWeapon: {fileID: 0}
+  thisWeaponIndex: 0
   noneSprite: {fileID: 21300000, guid: 23f8d18bba61bde4bbdebcdb7bbf9f16, type: 3}
 --- !u!1 &969471460
 GameObject:
@@ -3043,6 +3053,7 @@ MonoBehaviour:
   state: 0
   thisInventory: {fileID: 0}
   thisWeapon: {fileID: 0}
+  thisWeaponIndex: 0
   noneSprite: {fileID: 21300000, guid: 23f8d18bba61bde4bbdebcdb7bbf9f16, type: 3}
 --- !u!114 &1217576066
 MonoBehaviour:
@@ -3513,6 +3524,7 @@ MonoBehaviour:
   state: 0
   thisInventory: {fileID: 0}
   thisWeapon: {fileID: 0}
+  thisWeaponIndex: 0
   noneSprite: {fileID: 21300000, guid: 23f8d18bba61bde4bbdebcdb7bbf9f16, type: 3}
 --- !u!114 &1344775955
 MonoBehaviour:
@@ -4391,6 +4403,7 @@ MonoBehaviour:
   state: 0
   thisInventory: {fileID: 0}
   thisWeapon: {fileID: 0}
+  thisWeaponIndex: 0
   noneSprite: {fileID: 21300000, guid: 23f8d18bba61bde4bbdebcdb7bbf9f16, type: 3}
 --- !u!114 &1757890264
 MonoBehaviour:
@@ -4678,6 +4691,7 @@ MonoBehaviour:
   state: 0
   thisInventory: {fileID: 0}
   thisWeapon: {fileID: 0}
+  thisWeaponIndex: 0
   noneSprite: {fileID: 21300000, guid: 23f8d18bba61bde4bbdebcdb7bbf9f16, type: 3}
 --- !u!114 &1951870454
 MonoBehaviour:

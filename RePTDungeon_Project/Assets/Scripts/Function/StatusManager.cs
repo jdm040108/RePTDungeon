@@ -5,6 +5,7 @@ using System.IO;
 
 public class StatusManager : Singleton<StatusManager>
 {
+    StatusDataSave dataSave = new StatusDataSave();
 
     [Header("Path")]
     public string statusPath;
@@ -41,12 +42,81 @@ public class StatusManager : Singleton<StatusManager>
         {
             All_weapon.Add(item);
         }
-
-
         foreach (var item in All_weapon)
         {
             Inventory_Status_Index.Add(0);
         }
     }
 
+    public void InitLayoutIndex()
+    {
+        statusPath = Application.persistentDataPath + "./status_save_data.json";
+        if(!File.Exists(statusPath))
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                Layout_Index.Add(i);
+            }
+        }
+        else
+        {
+            dataSave.Load(statusPath);
+            Inventory_Status_Index.Clear();
+            foreach (var item in dataSave.Inventory_State_Index)
+            {
+                Inventory_Status_Index.Add(item);
+            }
+
+            Layout_Index.Clear();
+            foreach (var item in dataSave.Layout_Index)
+            {
+                Layout_Index.Add(item);
+            }
+
+        }
+    }
+
+    private void OnDestroy()
+    {
+        dataSave.SetValue(Layout_Index, Inventory_Status_Index);
+        dataSave.Save(statusPath);
+    }
+
+}
+
+[System.Serializable]
+public class StatusDataSave
+{
+    public List<int> Layout_Index = new List<int>();
+    public List<int> Inventory_State_Index = new List<int>();
+
+    public void Save(string _path)
+    {
+        string json_save = JsonUtility.ToJson(this, true);
+        File.WriteAllText(_path, json_save);
+    }
+
+    public void Load(string _path)
+    {
+        string json_save = File.ReadAllText(_path);
+        StatusDataSave temp = JsonUtility.FromJson<StatusDataSave>(json_save);
+
+        Layout_Index.Clear();
+        foreach (var item in temp.Layout_Index)
+        {
+            Layout_Index.Add(item);
+        }
+
+        Inventory_State_Index.Clear();
+        foreach (var item in temp.Inventory_State_Index)
+        {
+            Inventory_State_Index.Add(item);
+        }
+    }
+
+    public void SetValue(List<int> _layout, List<int> _inventory)
+    {
+        Layout_Index = _layout;
+        Inventory_State_Index = _inventory;
+    }
 }
