@@ -92,7 +92,6 @@ public class SettingUIManager : Singleton<SettingUIManager>
         statusManager.InitLayoutIndex();
         for (int i = 0; i < LayoutButton.Count; i++)
         {
-            Debug.Log("layout button set: " + i.ToString());
             LayoutButton[i].SetThisButtonSkill(Inventory_Layout_Buttons[statusManager.Layout_Index[i]], Inventory_Layout_Buttons[statusManager.Layout_Index[i]].index);
         }
     }
@@ -194,7 +193,7 @@ public class SettingUIManager : Singleton<SettingUIManager>
         statusManager.Layout_Index.Clear();
         foreach (var item in LayoutButton)
         {
-            statusManager.Layout_Index.Add(item.state);
+            statusManager.Layout_Index.Add(item.thisWeaponIndex);
         }
 
         statusManager.Inventory_Status_Index.Clear();

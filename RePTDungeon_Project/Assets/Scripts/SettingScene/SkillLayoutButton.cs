@@ -27,6 +27,9 @@ public class SkillLayoutButton : MonoBehaviour
     private void Update()
     {
         state = thisWeapon != null ? 1 : 0;
+
+        if (thisWeapon == null) thisWeaponIndex = -1;
+
         SetImage();
     }
 

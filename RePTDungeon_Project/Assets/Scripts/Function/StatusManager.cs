@@ -116,7 +116,16 @@ public class StatusDataSave
 
     public void SetValue(List<int> _layout, List<int> _inventory)
     {
-        Layout_Index = _layout;
-        Inventory_State_Index = _inventory;
+        Layout_Index.Clear();
+        foreach (var item in _layout)
+        {
+            Layout_Index.Add(item);
+        }
+
+        Inventory_State_Index.Clear();
+        foreach (var item in _inventory)
+        {
+            Inventory_State_Index.Add(item);
+        }
     }
 }
