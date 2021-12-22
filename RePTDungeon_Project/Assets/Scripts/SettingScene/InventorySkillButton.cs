@@ -29,6 +29,7 @@ public class InventorySkillButton : MonoBehaviour
     public void SetNull()
     {
         thisLayout = null;
+        state = 1;
     }
 
     public void SetValue(int _index, SettingWeapon _thisWeapon)
