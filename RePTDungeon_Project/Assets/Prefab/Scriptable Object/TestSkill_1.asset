@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   StateSprite:
-  - {fileID: 21300000, guid: d5c7e3b465a37d6449a04b2320ff0149, type: 3}
-  - {fileID: 21300000, guid: 05da1d7879f4b9f439d138091fb4a59c, type: 3}
-  - {fileID: 21300000, guid: e626ea493b6f95b44ad879277bf159f9, type: 3}
+  - {fileID: 21300000, guid: b6b36d2b21a1c6b4791da4bc276146bc, type: 3}
+  - {fileID: 21300000, guid: d516e256d6b71f2458ac40c2ac3a35ed, type: 3}
+  - {fileID: 21300000, guid: db882453493252048a1f5038f10155cc, type: 3}
