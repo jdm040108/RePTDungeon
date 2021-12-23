@@ -19,6 +19,8 @@ public class InGameUIManager : Singleton<InGameUIManager>
 
     [Header("Upgrade")]
     [SerializeField] GameObject UpgradeObject;
+    [SerializeField] Transform UpgradeStartPos;
+    [SerializeField] Transform UpgradeEndPos;
 
     protected override void Awake()
     {
@@ -33,12 +35,12 @@ public class InGameUIManager : Singleton<InGameUIManager>
 
     public void UpgradeObjOn()
     {
-        UpgradeObject.transform.DOMoveX(0, 0.5f).SetEase(Ease.OutBack);
+        UpgradeObject.transform.DOMoveX(UpgradeStartPos.position.x, 0.5f).SetEase(Ease.OutBack);
     }
 
     public void UpgradeObjOff()
     {
-        UpgradeObject.transform.DOMoveX(-750, 0.5f).SetEase(Ease.OutBack);
+        UpgradeObject.transform.DOMoveX(UpgradeEndPos.position.x, 0.5f).SetEase(Ease.OutBack);
     }
 
     void Update()
