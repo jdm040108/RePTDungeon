@@ -14,7 +14,7 @@ public class SkillUpgradeObject : MonoBehaviour
 
     public void UpgradeButton()
     {
-        if(InGameUIManager.Instance.coin >= thisSkill.upgradeCost)
+        if (InGameUIManager.Instance.coin >= thisSkill.upgradeCost)
         {
             thisSkill.level++;
             InGameUIManager.Instance.coin -= thisSkill.upgradeCost;
@@ -27,8 +27,8 @@ public class SkillUpgradeObject : MonoBehaviour
     void InitializeUI()
     {
         SkillName.text = thisSkill.skill_name.ToString();
-        SkillLevel.text = thisSkill.level.ToString();
-        SkillCost.text = thisSkill.upgradeCost.ToString();
+        SkillLevel.text = "Level: " + thisSkill.level.ToString();
+        SkillCost.text = "Cost: " + thisSkill.upgradeCost.ToString();
 
         IconImage.sprite = thisSkill.StateSprite[2];
     }

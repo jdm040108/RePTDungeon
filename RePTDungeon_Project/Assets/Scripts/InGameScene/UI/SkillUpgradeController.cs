@@ -22,6 +22,7 @@ public class SkillUpgradeController : MonoBehaviour
 
     void Start()
     {
+        UpgradeLayoutButton(0);
         InitializeSkillUpgrade();
     }
 
