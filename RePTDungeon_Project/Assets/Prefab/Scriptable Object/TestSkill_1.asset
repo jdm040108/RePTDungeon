@@ -17,3 +17,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b6b36d2b21a1c6b4791da4bc276146bc, type: 3}
   - {fileID: 21300000, guid: d516e256d6b71f2458ac40c2ac3a35ed, type: 3}
   - {fileID: 21300000, guid: db882453493252048a1f5038f10155cc, type: 3}
+  skill_name: 
+  skill_desc: 
+  skill_delay: 2
+  upgradeCost: 0
+  upgradeAmount: 0
+  this_attack_kind: 0
+  this_weapon_kind: 0

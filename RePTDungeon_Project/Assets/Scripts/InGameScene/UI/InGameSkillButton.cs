@@ -59,7 +59,7 @@ public class InGameSkillButton : MonoBehaviour
 
     public void SkillButtonOn()
     {
-        if (player.IsAttack && attackAble)
+        if (!player.IsAttack && attackAble)
         {
             player.SetButtonSkill(this_Weapon.this_attack_kind, this_Weapon.this_weapon_kind);
             curDelay = skillDelay;
