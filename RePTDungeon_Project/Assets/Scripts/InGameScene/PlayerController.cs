@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public enum PlayerAttackKind
 {
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
     public void InitKind()
     {
+        anim.gameObject.transform.DORotate(Vector3.zero, 0.5f);
         attackKind = (PlayerAttackKind)0;
         weaponKind = (PlayerWeaponKind)0;
         IsAttack = false;
