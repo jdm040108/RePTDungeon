@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InGameUIManager : MonoBehaviour
+public class InGameUIManager : Singleton<InGameUIManager>
 {
     PlayerController player;
 
     [Header("Datas")]
     [SerializeField] List<SettingWeapon> Skills = new List<SettingWeapon>();
+    public int coin;
 
     [Header("Skill Buttons")]
     [SerializeField] InGameSkillButton ButtonPrefab;
     [SerializeField] Transform ButtonContents;
     public List<InGameSkillButton> inGameSkills = new List<InGameSkillButton>();
+
+    protected override void Awake()
+    {
+
+    }
 
     void Start()
     {

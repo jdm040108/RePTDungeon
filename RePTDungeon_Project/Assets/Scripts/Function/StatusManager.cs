@@ -13,6 +13,10 @@ public class StatusManager : Singleton<StatusManager>
 
     [Header("Path")]
     public string statusPath;
+    public string weapon_Status_Path;
+
+    [Header("Weapon Status")]
+    public WeaponStatusSave Weapon_Status_Data;
 
     [Header("Index")]
     public List<int> Layout_Index = new List<int>();
@@ -29,7 +33,50 @@ public class StatusManager : Singleton<StatusManager>
     {
         InitialIndexSize();
         InitLayoutIndex();
+        InitializeWeaponStateData();
         SceneManager.LoadScene("MainScene");
+    }
+
+    public void InitializeWeaponStateData()
+    {
+        weapon_Status_Path = Application.persistentDataPath + "./Weapon_Status.json";
+        if(File.Exists(weapon_Status_Path))
+        {
+            Weapon_Status_Data.Status_List.Clear();
+
+            string json_save = File.ReadAllText(weapon_Status_Path);
+            WeaponStatusSave save_temp = JsonUtility.FromJson<WeaponStatusSave>(json_save);
+            foreach (var item in save_temp.Status_List)
+            {
+                Weapon_Status_Data.Status_List.Add(item);
+            }
+
+            for (int i = 0; i < Weapon_All.Count; i++)
+            {
+                Weapon_All[i].thisStatus = Weapon_Status_Data.Status_List[i];
+                Weapon_All[i].SetValue();
+            }
+        }
+        else
+        {
+            Weapon_Status_Data.Status_List.Clear();
+            foreach (var item in Weapon_All)
+            {
+                Weapon_Status_Data.Status_List.Add(item.thisStatus);
+            }
+        }
+    }
+
+    public void SaveWeaponStatus()
+    {
+        Weapon_Status_Data.Status_List.Clear();
+        foreach (var item in Weapon_All)
+        {
+            Weapon_Status_Data.Status_List.Add(item.thisStatus);
+        }
+
+        string json_save = JsonUtility.ToJson(Weapon_Status_Data, true);
+        File.WriteAllText(weapon_Status_Path, json_save);
     }
 
     public void InitialIndexSize()
@@ -92,6 +139,7 @@ public class StatusManager : Singleton<StatusManager>
     {
         dataSave.SetValue(Layout_Index, Inventory_Status_Index);
         dataSave.Save(statusPath);
+        SaveWeaponStatus();
     }
 
 }
@@ -140,4 +188,18 @@ public class StatusDataSave
             Inventory_State_Index.Add(item);
         }
     }
+}
+
+[System.Serializable]
+public class WeaponStatusSave
+{
+    public List<WeaponStatus> Status_List = new List<WeaponStatus>();
+}
+
+[System.Serializable]
+public class WeaponStatus
+{
+    public int level;
+    public int cost;
+    public float costIncrease;
 }
