@@ -40,9 +40,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerAttackKind attackKind;
     [SerializeField] PlayerWeaponKind weaponKind;
 
+    [SerializeField] Transform weaponPosition;
+    [SerializeField] List<WeaponBase> weapons = new List<WeaponBase>();
+
     void Start()
     {
-        
+        InitializeWeapon();
+        SetWeapon();
     }
 
     void Update()
@@ -50,13 +54,29 @@ public class PlayerController : MonoBehaviour
         AnimationSetting();
     }
 
+    void InitializeWeapon()
+    {
+        var _weapons = weaponPosition.GetComponentsInChildren<WeaponBase>();
+        weapons.Clear();
+        foreach (var item in _weapons)
+        {
+            weapons.Add(item);
+        }
+    }
+
     void AnimationSetting()
     {
-        if (attackKind != (PlayerAttackKind)0 && weaponKind != (PlayerWeaponKind)0)
+        anim.SetInteger("AttackKind", (int)attackKind);
+        anim.SetInteger("WeaponKind", (int)weaponKind);
+    }
+
+    public void SetWeapon()
+    {
+        foreach (var item in weapons)
         {
-            anim.SetInteger("AttackKind", (int)attackKind);
-            anim.SetInteger("WeaponKind", (int)weaponKind);
+            item.gameObject.SetActive(false);
         }
+        weapons[(int)weaponKind].gameObject.SetActive(true);
     }
 
     public void InitKind()
@@ -64,12 +84,14 @@ public class PlayerController : MonoBehaviour
         attackKind = (PlayerAttackKind)0;
         weaponKind = (PlayerWeaponKind)0;
         IsAttack = false;
+        SetWeapon();
     }
 
     public void SetButtonSkill(PlayerAttackKind _attackKind, PlayerWeaponKind _weaponKind)
     {
         attackKind = _attackKind;
         weaponKind = _weaponKind;
-        //IsAttack = true;
+        IsAttack = true;
+        SetWeapon();
     }
 }
