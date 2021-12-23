@@ -35,7 +35,15 @@ public enum PlayerWeaponKind
 
 public class PlayerController : MonoBehaviour
 {
-
+    private bool isAttack;
+    public bool IsAttack
+    {
+        get => isAttack;
+        set
+        {
+            isAttack = value;
+        }
+    }
     [SerializeField] Animator anim;
     [SerializeField] PlayerAttackKind attackKind;
     [SerializeField] PlayerWeaponKind weaponKind;
@@ -47,12 +55,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
+        AnimationSetting();
     }
 
-    public void Attack(PlayerAttackKind _attackKind, PlayerWeaponKind _weaponKind)
+    void AnimationSetting()
+    {
+        if (attackKind != (PlayerAttackKind)0 && weaponKind != (PlayerWeaponKind)0)
+        {
+            anim.SetInteger("AttackKind", (int)attackKind);
+            anim.SetInteger("WeaponKind", (int)weaponKind);
+        }
+    }
+
+    public void InitKind()
+    {
+        attackKind = (PlayerAttackKind)0;
+        weaponKind = (PlayerWeaponKind)0;
+        isAttack = false;
+    }
+
+    public void SetButtonSkill(PlayerAttackKind _attackKind, PlayerWeaponKind _weaponKind)
     {
         attackKind = _attackKind;
         weaponKind = _weaponKind;
+        isAttack = true;
     }
 }

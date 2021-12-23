@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class SettingUIManager : Singleton<SettingUIManager>
 {
     StatusManager statusManager;
+    int currentCost;
 
     [Header("Layout")]
     public List<SkillLayoutButton> LayoutButton = new List<SkillLayoutButton>();
@@ -60,6 +63,11 @@ public class SettingUIManager : Singleton<SettingUIManager>
     [SerializeField] SkillUpgrade UpgradePrefab;
     [SerializeField] List<SkillUpgrade> Upgrade_Layout = new List<SkillUpgrade>();
 
+    [Header("Unlock")]
+    [SerializeField] GameObject UnlockObject;
+    [SerializeField] Text UnlockMessage;
+    string message = "해금하시겠습니까?\n가격: ";
+
     protected override void Awake()
     {
 
@@ -68,7 +76,7 @@ public class SettingUIManager : Singleton<SettingUIManager>
     private void Start()
     {
         statusManager = StatusManager.Instance;
-        statusManager.InitLayoutIndex();
+        UnlockObject.SetActive(false);
         InitializeInventoryLayout();
         SetInventoryLayout();
         SetScrollRect(0);
@@ -96,6 +104,56 @@ public class SettingUIManager : Singleton<SettingUIManager>
         }
     }
 
+    public void UnlockMessageOn(int _cost)
+    {
+        currentCost = _cost;
+        UnlockObject.SetActive(true);
+        UnlockMessage.text = "";
+        UnlockObject.transform.DOLocalMoveY(0, 0.5f).SetEase(Ease.OutBack).OnComplete(() =>
+        {
+            UnlockMessage.DOText(message + _cost.ToString(), 1f);
+        });
+    }
+
+    public void UnlockYes()
+    {
+        if(statusManager.Coin >= currentInventory.thisWeapon.upgradeCost)
+        {
+            UnlockExit();
+            statusManager.Coin -= currentInventory.thisWeapon.upgradeCost;
+            currentInventory.state = 1;
+            SaveInventoryStateData();
+        }
+    }
+
+    void SaveInventoryStateData()
+    {
+        statusManager.Inventory_Status_Index.Clear();
+        foreach (var item in Inventory_Layout_Buttons)
+        {
+            statusManager.Inventory_Status_Index.Add(item.state);
+        }
+    }
+
+    public void UnlockNo()
+    {
+        UnlockExit();
+    }
+
+    void UnlockExit()
+    {
+        UnlockObject.transform.DOLocalMoveY(-1078, 1f).SetEase(Ease.InOutBack).OnComplete(() =>
+        {
+            UnlockMessage.text = "";
+            UnlockObject.SetActive(false);
+        });
+    }
+
+    public void MoveScene()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+
     void InitUpgradeButton()
     {
         for (int i = 0; i < 8; i++)
@@ -121,7 +179,6 @@ public class SettingUIManager : Singleton<SettingUIManager>
 
     void InitLayout()
     {
-        statusManager.InitLayoutIndex();
         for (int i = 0; i < LayoutButton.Count; i++)
         {
             LayoutButton[i].SetThisButtonSkill(Inventory_Layout_Buttons[statusManager.Layout_Index[i]], Inventory_Layout_Buttons[statusManager.Layout_Index[i]].index);
@@ -159,11 +216,6 @@ public class SettingUIManager : Singleton<SettingUIManager>
     public void SetInventoryLayout()
     {
         int index = 0;
-
-        if (!File.Exists(statusManager.statusPath))
-        {
-            statusManager.InitialIndexSize();
-        }
 
         Inventory_Layout_Buttons.Clear();
 

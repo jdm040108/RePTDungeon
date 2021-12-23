@@ -47,9 +47,9 @@ public class InventorySkillButton : MonoBehaviour
 
     public void SetLayoutWeapon()
     {
-        if(SettingUIManager.Instance.touch_state == 1 && state == 1)
+        if (SettingUIManager.Instance.touch_state == 1 && state == 1)
         {
-            if(thisLayout != null)
+            if (thisLayout != null)
             {
                 thisLayout.SetNull();
                 thisLayout = null;
@@ -64,6 +64,11 @@ public class InventorySkillButton : MonoBehaviour
 
             SettingUIManager.Instance.SetLayoutIndex();
             SettingUIManager.Instance.SetUpgradeButtonData();
+        }
+        else if (SettingUIManager.Instance.touch_state == 1 && state == 0)
+        {
+            SettingUIManager.Instance.UnlockMessageOn(thisWeapon.upgradeCost);
+            SettingUIManager.Instance.currentInventory = this;
         }
     }
 }

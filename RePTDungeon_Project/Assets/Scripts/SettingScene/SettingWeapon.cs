@@ -10,4 +10,12 @@ public class SettingWeapon : ScriptableObject
 
     public string skill_name;
     public string skill_desc;
+
+    public float skill_delay;
+
+    public int upgradeCost;
+    public float upgradeAmount;
+
+    public PlayerAttackKind this_attack_kind;
+    public PlayerWeaponKind this_weapon_kind;
 }

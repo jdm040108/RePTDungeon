@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 
 public class StatusManager : Singleton<StatusManager>
 {
     StatusDataSave dataSave = new StatusDataSave();
+
+    [Header("Value")]
+    public int Coin;
 
     [Header("Path")]
     public string statusPath;
@@ -19,30 +23,36 @@ public class StatusManager : Singleton<StatusManager>
     public List<SettingWeapon> Weapon_Rare = new List<SettingWeapon>();
     public List<SettingWeapon> Weapon_VeryRare = new List<SettingWeapon>();
     public List<SettingWeapon> Weapon_Super = new List<SettingWeapon>();
+    public List<SettingWeapon> Weapon_All = new List<SettingWeapon>();
+
+    private void Start()
+    {
+        InitialIndexSize();
+        InitLayoutIndex();
+        SceneManager.LoadScene("MainScene");
+    }
 
     public void InitialIndexSize()
     {
         Inventory_Status_Index.Clear();
 
-        List<SettingWeapon> All_weapon = new List<SettingWeapon>();
-
         foreach (var item in Weapon_Common)
         {
-            All_weapon.Add(item);
+            Weapon_All.Add(item);
         }
         foreach (var item in Weapon_Rare)
         {
-            All_weapon.Add(item);
+            Weapon_All.Add(item);
         }
         foreach (var item in Weapon_VeryRare)
         {
-            All_weapon.Add(item);
+            Weapon_All.Add(item);
         }
         foreach (var item in Weapon_Super)
         {
-            All_weapon.Add(item);
+            Weapon_All.Add(item);
         }
-        foreach (var item in All_weapon)
+        foreach (var item in Weapon_All)
         {
             Inventory_Status_Index.Add(0);
         }
