@@ -69,12 +69,7 @@ public class StatusManager : Singleton<StatusManager>
 
     public void SaveWeaponStatus()
     {
-        Weapon_Status_Data.Status_List.Clear();
-        foreach (var item in Weapon_All)
-        {
-            Weapon_Status_Data.Status_List.Add(item.thisStatus);
-        }
-
+        SaveSkillStatus();
         string json_save = JsonUtility.ToJson(Weapon_Status_Data, true);
         File.WriteAllText(weapon_Status_Path, json_save);
     }
@@ -132,6 +127,15 @@ public class StatusManager : Singleton<StatusManager>
                 Layout_Index.Add(item);
             }
 
+        }
+    }
+
+    public void SaveSkillStatus()
+    {
+        Weapon_Status_Data.Status_List.Clear();
+        foreach (var item in Weapon_All)
+        {
+            Weapon_Status_Data.Status_List.Add(item.thisStatus);
         }
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillUpgradeController : MonoBehaviour
+public class SkillUpgradeController : Singleton<SkillUpgradeController>
 {
 
     [Header("Upgrading system")]
@@ -33,12 +33,21 @@ public class SkillUpgradeController : MonoBehaviour
 
     void InitializeSkillUpgrade()
     {
-        foreach (var item in StatusManager.Instance.Weapon_All)
+        for (int i = 0; i < 8; i++)
         {
             SkillUpgradeObject temp = Instantiate(Skill_Upgrade_Prefab, Upgrade_Scroll_View[0].content);
-            temp.SetData(item);
+            temp.SetData(StatusManager.Instance.Weapon_All[StatusManager.Instance.Layout_Index[i]]);
             Skill_Upgrade_Object_List.Add(temp);
         }
+    }
+
+    public void SaveSkillUpgrade()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            StatusManager.Instance.Weapon_All[StatusManager.Instance.Layout_Index[i]].thisStatus = Skill_Upgrade_Object_List[i].thisSkill.thisStatus;
+        }
+        StatusManager.Instance.SaveSkillStatus();
     }
 
     void CoinTxtController()

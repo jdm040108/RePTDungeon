@@ -163,9 +163,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6717172901421085326}
+  - component: {fileID: 8604830056496154457}
   - component: {fileID: 6717172901421085325}
   - component: {fileID: 6717172901421085324}
   - component: {fileID: 6717172901421085327}
+  - component: {fileID: 3774508807574543220}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -193,6 +195,18 @@ RectTransform:
   m_AnchoredPosition: {x: 151, y: 0}
   m_SizeDelta: {x: 132.0765, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8604830056496154457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6717172901421085313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5bb01afd276fd44a5ad6e43f95c64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &6717172901421085325
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -274,7 +288,50 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6717172901421085324}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6717172902342576083}
+        m_TargetAssemblyTypeName: SkillUpgradeObject, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8604830056496154457}
+        m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+        m_MethodName: StartEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!95 &3774508807574543220
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6717172901421085313}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8fc817c22233a114b8e22782cc59ba2e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6717172901941807208
 GameObject:
   m_ObjectHideFlags: 0

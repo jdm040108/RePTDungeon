@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SkillUpgradeObject : MonoBehaviour
 {
-    SettingWeapon thisSkill;
+    public SettingWeapon thisSkill;
     [SerializeField] Image IconImage;
     [SerializeField] Text SkillName;
     [SerializeField] Text SkillLevel;
@@ -22,6 +22,8 @@ public class SkillUpgradeObject : MonoBehaviour
 
             InitializeUI();
         }
+        thisSkill.ReturnValue();
+        SkillUpgradeController.Instance.SaveSkillUpgrade();
     }
 
     void InitializeUI()

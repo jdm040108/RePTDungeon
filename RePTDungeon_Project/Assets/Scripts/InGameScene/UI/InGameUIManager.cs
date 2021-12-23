@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class InGameUIManager : Singleton<InGameUIManager>
 {
@@ -16,6 +17,9 @@ public class InGameUIManager : Singleton<InGameUIManager>
     [SerializeField] Transform ButtonContents;
     public List<InGameSkillButton> inGameSkills = new List<InGameSkillButton>();
 
+    [Header("Upgrade")]
+    [SerializeField] GameObject UpgradeObject;
+
     protected override void Awake()
     {
 
@@ -25,6 +29,16 @@ public class InGameUIManager : Singleton<InGameUIManager>
     {
         player = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         SetInGameSkills();
+    }
+
+    public void UpgradeObjOn()
+    {
+        UpgradeObject.transform.DOMoveX(0, 0.5f).SetEase(Ease.OutBack);
+    }
+
+    public void UpgradeObjOff()
+    {
+        UpgradeObject.transform.DOMoveX(-750, 0.5f).SetEase(Ease.OutBack);
     }
 
     void Update()
