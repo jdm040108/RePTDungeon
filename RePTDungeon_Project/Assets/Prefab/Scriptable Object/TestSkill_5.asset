@@ -22,5 +22,11 @@ MonoBehaviour:
   skill_delay: 2
   upgradeCost: 0
   upgradeAmount: 0
-  this_attack_kind: 0
+  level: 0
+  curUpgradeAmount: 0
+  this_attack_kind: 5
   this_weapon_kind: 0
+  thisStatus:
+    level: 0
+    cost: 0
+    costIncrease: 0

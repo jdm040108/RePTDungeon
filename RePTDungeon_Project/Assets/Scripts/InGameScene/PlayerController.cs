@@ -6,32 +6,63 @@ using DG.Tweening;
 
 public enum PlayerAttackKind
 {
-    NONE,
-    SHEATH, //칼집에서 칼 뽑고 공격하는거 (발도)
-    SIDESLASH, //횡베기
-    DOWNSLASH, //종베기
-    STING,
-    KICK,
-    GUNFIRE,
-    PUNCH,
-    THROW,
-    SLICE,
-    MAGIC,
-    SELFHARM,
-    GROUNDMAGIC
+    None,
+    FastDraw, //발도
+    LightSideSlash,
+    LightUpSlash,
+    Sting, //찌르기
+    Kick,
+    HeavyChop,
+    HeavySwish,
+    HeavySemiCircleSlash,
+    LightFastSlash,
+    ShotGun,
+    Biting,
+    Punch,
+    Throw,
+    DaggerContinuous,
+    BoxingPunch,
+    GroundMagic,
+    Sniping,
+    ContinuousSlash,
+    CommonMagic,
+    FlameAttack,
+    LightContinuousSlash,
+    Iai, //발도술 (!= 발도)
+    ShieldBlock,
+    CannonShot
 }
 
 public enum PlayerWeaponKind
 {
-    NONE,
-    LIGHTSWORD,
-    BIGSWORD,
-    SPEAR,
-    SHOTGUN,
-    GLOVES,
-    KNIFE,
-    GUN,
-    CHINEASESABRE //언월도
+    None,
+    CommonLightSword,
+    CommonBigSword,
+    CommonGloves,
+    ShotGun,
+    RareLightSword,
+    RareBigSword,
+    Sickle, //낫
+    Gauntlets,
+    Dagger,
+    Katana,
+    ElectronicSpear,
+    WireGloves,
+    HeavyAxe,
+    SniperMusket,
+    HeavyNeedle,
+    GuanDao, //언월도
+    AED, //제세동기
+    EnergySword,
+    FlameThrower,
+    SignatureSword,
+    Mimicry, //미미크리
+    FireSword,
+    BloodKatana, //시협회 카타나
+    RomanShield,
+    BloodSickle, //청소부 낫
+    HeavyBigSword,
+    Cannon
 }
 
 public class PlayerController : MonoBehaviour
@@ -68,7 +99,6 @@ public class PlayerController : MonoBehaviour
     void AnimationSetting()
     {
         anim.SetInteger("AttackKind", (int)attackKind);
-        anim.SetInteger("WeaponKind", (int)weaponKind);
     }
 
     public void SetWeapon()
