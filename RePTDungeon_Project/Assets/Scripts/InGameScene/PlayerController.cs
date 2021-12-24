@@ -112,7 +112,8 @@ public class PlayerController : MonoBehaviour
 
     public void InitKind()
     {
-        anim.gameObject.transform.DORotate(Vector3.zero, 0.5f);
+        anim.gameObject.transform.DOLocalRotate(Vector3.zero, 0.5f);
+        anim.gameObject.transform.DOLocalMove(Vector3.zero, 0.5f);
         attackKind = (PlayerAttackKind)0;
         weaponKind = (PlayerWeaponKind)0;
         IsAttack = false;

@@ -25,7 +25,7 @@ MonoBehaviour:
   level: 0
   curUpgradeAmount: 0
   this_attack_kind: 5
-  this_weapon_kind: 0
+  this_weapon_kind: 9
   thisStatus:
     level: 0
     cost: 0
