@@ -67,11 +67,24 @@ public enum PlayerWeaponKind
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("State")]
     public bool IsAttack;
+    public float Hp;
+    public int Charge;
+
+    [Header("Self-Harm")]
+    public float harmAmount;
+    public int harmCount;
+    public float harmDelay;
+    public bool harmAble;
+    float curDelay;
+
+    [Header("Animations")]
     [SerializeField] Animator anim;
     [SerializeField] PlayerAttackKind attackKind;
     [SerializeField] PlayerWeaponKind weaponKind;
 
+    [Header("Weapons")]
     [SerializeField] Transform weaponPosition;
     [SerializeField] List<WeaponBase> weapons = new List<WeaponBase>();
 
@@ -84,6 +97,36 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         AnimationSetting();
+        SelfHarm();
+    }
+
+    public void SelfHarmActive(int count, float damage)
+    {
+        harmAble = true;
+        harmCount = count;
+        harmAmount = damage;
+    }
+
+    void SelfHarm()
+    {
+        if (harmAble)
+        {
+            if (harmDelay <= curDelay)
+            {
+                curDelay = 0;
+                Hp -= harmAmount;
+                harmCount--;
+            }
+            else
+            {
+                curDelay += Time.deltaTime;
+            }
+
+            if(harmCount <= 0)
+            {
+                harmAble = false;
+            }
+        }
     }
 
     void InitializeWeapon()
@@ -101,6 +144,11 @@ public class PlayerController : MonoBehaviour
         anim.SetInteger("AttackKind", (int)attackKind);
     }
 
+    public void OnAttack()
+    {
+        weapons[(int)weaponKind].OnAttack();
+    }
+
     public void SetWeapon()
     {
         foreach (var item in weapons)
@@ -112,6 +160,9 @@ public class PlayerController : MonoBehaviour
 
     public void InitKind()
     {
+
+        weapons[(int)weaponKind].EndAttack();
+
         anim.gameObject.transform.DOLocalRotate(Vector3.zero, 0.5f);
         anim.gameObject.transform.DOLocalMove(Vector3.zero, 0.5f);
         attackKind = (PlayerAttackKind)0;
