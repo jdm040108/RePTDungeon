@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelfHarmWeapon : WeaponBase
+public class FireSword : WeaponBase
 {
-    public float buffAmount;
-    public float harmAmount;
-    public int harmCount;
+
+    public float dotDeal_damage;
+    public int dotDeal_count;
 
     protected override void Start()
     {
@@ -21,12 +21,14 @@ public class SelfHarmWeapon : WeaponBase
     public override void OnAttack()
     {
         base.OnAttack();
-        Player.SelfHarmActive(harmCount, harmAmount, buffAmount);
     }
 
     protected override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other);
+        if (IsDamageAble && other.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyBase>().Damaged(Damage * Player.buff, Drag);
+            other.GetComponent<EnemyBase>().StartDotDeal(dotDeal_count, dotDeal_damage);
+        }
     }
-
 }

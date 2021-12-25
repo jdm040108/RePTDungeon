@@ -32,7 +32,7 @@ public abstract class WeaponBase : MonoBehaviour
     {
         if (IsDamageAble && other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyBase>().Damaged(Damage, Drag);
+            other.GetComponent<EnemyBase>().Damaged(Damage * Player.buff, Drag);
         }
     }
 }

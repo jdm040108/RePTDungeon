@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 11601011}
   - component: {fileID: 11601012}
+  - component: {fileID: 11601013}
   m_Layer: 0
   m_Name: WireGloves
   m_TagString: Untagged
@@ -170,6 +171,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &11601013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11601010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df0d3d480d99dc446900efc5eaf9dfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
+  buffAmount: 0
+  harmAmount: 0
+  harmCount: 0
 --- !u!1 &21071594
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,6 +2558,11 @@ MonoBehaviour:
   IsAttack: 0
   Hp: 0
   Charge: 0
+  buff: 1
+  harmAmount: 0
+  harmCount: 0
+  harmDelay: 0
+  harmAble: 0
   anim: {fileID: 95151758549884141}
   attackKind: 0
   weaponKind: 0
@@ -4201,8 +4225,8 @@ GameObject:
   - component: {fileID: 4792934676227174}
   - component: {fileID: 33719282870701982}
   - component: {fileID: 23393179519315232}
-  - component: {fileID: 95675363270148316}
   - component: {fileID: 1688206663480081}
+  - component: {fileID: 1688206663480082}
   m_Layer: 0
   m_Name: Heavy_Axe
   m_TagString: Untagged
@@ -4226,6 +4250,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1688206663480082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688206663480080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351355f810884fb479c5d7e8710d2003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
 --- !u!1 &1691242735017201
 GameObject:
   m_ObjectHideFlags: 0
@@ -6161,25 +6200,6 @@ Animator:
   m_GameObject: {fileID: 1211057839894465}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b6ccaf2de7884b24090d1171e163d7e9, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!95 &95675363270148316
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1688206663480080}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4cfc1dec98dca4348b719df9f5de8242, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0

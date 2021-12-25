@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
     public bool IsAttack;
     public float Hp;
     public int Charge;
+    public float buff = 1;
 
     [Header("Self-Harm")]
     public float harmAmount;
@@ -100,11 +101,12 @@ public class PlayerController : MonoBehaviour
         SelfHarm();
     }
 
-    public void SelfHarmActive(int count, float damage)
+    public void SelfHarmActive(int count, float damage, float buffAmount)
     {
         harmAble = true;
         harmCount = count;
         harmAmount = damage;
+        buff = buffAmount;
     }
 
     void SelfHarm()
@@ -125,6 +127,7 @@ public class PlayerController : MonoBehaviour
             if(harmCount <= 0)
             {
                 harmAble = false;
+                buff = 1;
             }
         }
     }
