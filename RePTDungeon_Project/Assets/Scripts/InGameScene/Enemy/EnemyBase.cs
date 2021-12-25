@@ -21,7 +21,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     void Update()
     {
-        
+        DotDealLogic();
     }
 
     void DotDealLogic()
