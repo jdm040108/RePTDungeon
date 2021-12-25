@@ -21,6 +21,7 @@ public abstract class EnemyBase : MonoBehaviour
 
      void Start()
     {
+        rigid = GetComponent<Rigidbody>();
         isHit = false;
     }
 
@@ -28,8 +29,8 @@ public abstract class EnemyBase : MonoBehaviour
     {
         Debug.Log("dldldl");
         reactVec = reactVec.normalized;
-        reactVec += Vector3.back;
-        rigid.AddRelativeForce(reactVec * 5, ForceMode.Acceleration);
+        reactVec += Vector3.forward;
+        rigid.AddRelativeForce(reactVec * 0.5f, ForceMode.Acceleration);
 
         if (isHit==true)
         {
