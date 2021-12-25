@@ -4,6 +4,11 @@ using UnityEngine;
 
 public abstract class EnemyBase : MonoBehaviour
 {
+    Rigidbody rigid;
+    Vector3 reactVec;
+
+    float Knockback;
+    static bool isHit;
 
     protected float Hp;
 
@@ -16,12 +21,18 @@ public abstract class EnemyBase : MonoBehaviour
 
     void Start()
     {
-        
+        isHit = false;
     }
 
     void Update()
     {
-        
+       if(isHit==true)
+        {
+            reactVec = reactVec.normalized;
+            reactVec += Vector3.back;
+            rigid.AddRelativeForce(reactVec * Knockback, ForceMode.Impulse);
+            isHit = false;
+        }
     }
 
     void DotDealLogic()
@@ -49,6 +60,11 @@ public abstract class EnemyBase : MonoBehaviour
     public void Damaged(float _damage, float drag /*밀려나는 정도*/)
     {
         Hp -= _damage;
+        if (drag != 0)
+        {
+            Knockback = drag;
+            isHit = true;
+        }
         //damage effect
     }
 
