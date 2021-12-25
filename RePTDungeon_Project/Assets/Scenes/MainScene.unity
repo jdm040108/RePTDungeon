@@ -199,6 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 21071595}
   - component: {fileID: 21071596}
+  - component: {fileID: 21071597}
   m_Layer: 0
   m_Name: EmptyWeapon
   m_TagString: Untagged
@@ -236,6 +237,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &21071597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21071594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351355f810884fb479c5d7e8710d2003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
 --- !u!1 &103132418
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -574.99976, y: 9.208633e-12}
+  m_AnchoredPosition: {x: -575, y: 98}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &294298796
@@ -662,6 +678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 440475146}
   - component: {fileID: 440475147}
+  - component: {fileID: 440475148}
   m_Layer: 0
   m_Name: FlameThrower
   m_TagString: Untagged
@@ -699,6 +716,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &440475148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440475145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351355f810884fb479c5d7e8710d2003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
 --- !u!1 &449961163
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,8 +957,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -414}
-  m_SizeDelta: {x: 1800, y: 200}
+  m_AnchoredPosition: {x: 0, y: -408.28}
+  m_SizeDelta: {x: 1902.3, y: 205.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &522366530
 MonoBehaviour:
@@ -941,14 +973,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 164643cb9f1a4c641a1a2e701a23f364, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1063,8 +1095,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 210, y: -140}
-  m_SizeDelta: {x: 200, y: 150}
+  m_AnchoredPosition: {x: 160, y: -112}
+  m_SizeDelta: {x: 255.12, y: 127.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &776541985
 MonoBehaviour:
@@ -1142,8 +1174,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f365bdc295a6ea44f87caac74fc00a93, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1409,10 +1441,10 @@ RectTransform:
   m_Father: {fileID: 1307217731}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 710, y: 405}
-  m_SizeDelta: {x: 424.893, y: 190.5412}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -160, y: -112}
+  m_SizeDelta: {x: 255.12, y: 127.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &915344923
 MonoBehaviour:
@@ -1490,8 +1522,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9a230f518047f7042857b1073c168c15, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1540,7 +1572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 9.208633e-12}
+  m_AnchoredPosition: {x: -0.00024414062, y: 98}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &997575485
@@ -2763,6 +2795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1783924314}
   - component: {fileID: 1783924315}
+  - component: {fileID: 1783924316}
   m_Layer: 0
   m_Name: Heavy_Needle
   m_TagString: Untagged
@@ -2800,6 +2833,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1783924316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783924313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351355f810884fb479c5d7e8710d2003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
 --- !u!1 &1843463641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2839,7 +2887,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 84.97499}
+  m_AnchoredPosition: {x: -575, y: 98}
   m_SizeDelta: {x: 575, y: 778.05}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1843463643
@@ -2967,6 +3015,7 @@ GameObject:
   - component: {fileID: 2044811909}
   - component: {fileID: 2044811908}
   - component: {fileID: 2044811911}
+  - component: {fileID: 2044811912}
   m_Layer: 0
   m_Name: AED
   m_TagString: Untagged
@@ -3066,6 +3115,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2044811912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044811906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351355f810884fb479c5d7e8710d2003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
 --- !u!1 &2077484214
 GameObject:
   m_ObjectHideFlags: 0
@@ -3612,8 +3676,8 @@ GameObject:
   - component: {fileID: 4580021203035921}
   - component: {fileID: 33541695104592761}
   - component: {fileID: 23622791992792785}
-  - component: {fileID: 95388891688314885}
   - component: {fileID: 1211057839894466}
+  - component: {fileID: 1211057839894467}
   m_Layer: 0
   m_Name: Sniper_Musket
   m_TagString: Untagged
@@ -3637,6 +3701,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1211057839894467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211057839894465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895f278871eedbc498185fbe28ef8369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
+  bullet: {fileID: 0}
 --- !u!1 &1220065360052709
 GameObject:
   m_ObjectHideFlags: 0
@@ -6116,6 +6196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 808642598859212058}
   - component: {fileID: 32422967391608737}
+  - component: {fileID: 32422967391608738}
   m_Layer: 0
   m_Name: Heavy_Big_Sword
   m_TagString: Untagged
@@ -6139,6 +6220,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &32422967391608738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32422967391608736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351355f810884fb479c5d7e8710d2003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
 --- !u!33 &33209845114584176
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6185,25 +6281,6 @@ Animator:
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!95 &95388891688314885
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211057839894465}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b6ccaf2de7884b24090d1171e163d7e9, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -6603,6 +6680,7 @@ GameObject:
   - component: {fileID: 259753219209465496}
   - component: {fileID: 187307307748685248}
   - component: {fileID: 274253126418168531}
+  - component: {fileID: 274253126418168532}
   m_Layer: 0
   m_Name: Energy_Sword
   m_TagString: Untagged
@@ -6626,6 +6704,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &274253126418168532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274253126418168530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6033388c808bdf4d82789d38c0b00ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
+  chargeAmount: 0
+  electronicType: 1
 --- !u!4 &277000902491891128
 Transform:
   m_ObjectHideFlags: 0
@@ -7226,6 +7321,7 @@ GameObject:
   - component: {fileID: 3469287837875328049}
   - component: {fileID: 1711813855223783675}
   - component: {fileID: 919132147688341807}
+  - component: {fileID: 919132147688341808}
   m_Layer: 0
   m_Name: Mimicry
   m_TagString: Untagged
@@ -7249,6 +7345,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &919132147688341808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147688341806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351355f810884fb479c5d7e8710d2003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
 --- !u!1 &919132147966071248
 GameObject:
   m_ObjectHideFlags: 0
@@ -7310,6 +7421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450652221213395}
   - component: {fileID: 919132148486230122}
+  - component: {fileID: 919132148486230123}
   m_Layer: 0
   m_Name: sickle
   m_TagString: Untagged
@@ -7333,6 +7445,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &919132148486230123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148486230121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e998eca1557e8134ab050ec11480440e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
 --- !u!1 &919132149354005990
 GameObject:
   m_ObjectHideFlags: 0
@@ -7343,6 +7470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653542014812}
   - component: {fileID: 919132149354005991}
+  - component: {fileID: 919132149354005992}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -7366,6 +7494,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &919132149354005992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149354005990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895f278871eedbc498185fbe28ef8369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
+  bullet: {fileID: 0}
 --- !u!1 &919132149606797532
 GameObject:
   m_ObjectHideFlags: 0
@@ -7378,6 +7522,7 @@ GameObject:
   - component: {fileID: 3469287837106111939}
   - component: {fileID: 1711813855461241097}
   - component: {fileID: 919132149606797533}
+  - component: {fileID: 919132149606797534}
   m_Layer: 0
   m_Name: Roman_Shield
   m_TagString: Untagged
@@ -7401,6 +7546,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &919132149606797534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149606797532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fed70512e3f5634e81d80f02008f5f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
 --- !u!23 &931326602624080259
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9197,6 +9357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2836524148088053611}
   - component: {fileID: 3176879435264247250}
+  - component: {fileID: 3176879435264247251}
   m_Layer: 0
   m_Name: Blood_Katana
   m_TagString: Untagged
@@ -9220,6 +9381,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3176879435264247251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3176879435264247249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351355f810884fb479c5d7e8710d2003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
 --- !u!4 &3188898017145805405
 Transform:
   m_ObjectHideFlags: 0
@@ -11599,6 +11775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7740698471725171990}
   - component: {fileID: 6928696299531722669}
+  - component: {fileID: 6928696299531722670}
   m_Layer: 0
   m_Name: Fire_Sword
   m_TagString: Untagged
@@ -11622,6 +11799,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6928696299531722670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6928696299531722668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f712c50f8fa4b4aad0f7f9f623f05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
+  dotDeal_damage: 0
+  dotDeal_count: 0
 --- !u!4 &6946472399301557037
 Transform:
   m_ObjectHideFlags: 0
@@ -12255,6 +12449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6923468612318770734}
   - component: {fileID: 7736844040429366421}
+  - component: {fileID: 7736844040429366422}
   m_Layer: 0
   m_Name: GuanDao
   m_TagString: Untagged
@@ -12278,6 +12473,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7736844040429366422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7736844040429366420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351355f810884fb479c5d7e8710d2003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
 --- !u!4 &7740698471725171990
 Transform:
   m_ObjectHideFlags: 0
@@ -13254,6 +13464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8480768026812821907}
   - component: {fileID: 9149745692155800362}
+  - component: {fileID: 9149745692155800363}
   m_Layer: 0
   m_Name: Heavy Full Metal Sword
   m_TagString: Untagged
@@ -13277,3 +13488,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9149745692155800363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9149745692155800361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351355f810884fb479c5d7e8710d2003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDamageAble: 0
+  Damage: 0
+  Drag: 0
