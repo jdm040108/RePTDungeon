@@ -19,14 +19,19 @@ public abstract class EnemyBase : MonoBehaviour
     float dotDeal_damage;
     int dotDeal_count;
 
-    void Start()
+     void Start()
     {
         isHit = false;
     }
 
-    void Update()
+     void Update()
     {
-       if(isHit==true)
+        Debug.Log("dldldl");
+        reactVec = reactVec.normalized;
+        reactVec += Vector3.back;
+        rigid.AddRelativeForce(reactVec * 5, ForceMode.Acceleration);
+
+        if (isHit==true)
         {
             reactVec = reactVec.normalized;
             reactVec += Vector3.back;
@@ -35,7 +40,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    void DotDealLogic()
+     void DotDealLogic()
     {
         if(dotDeal_available)
         {
