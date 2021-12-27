@@ -27,6 +27,7 @@ public abstract class EnemyBase : MonoBehaviour
 
      void Update()
     {
+        DotDealLogic();
         Debug.Log("dldldl");
         reactVec = reactVec.normalized;
         reactVec += Vector3.forward;

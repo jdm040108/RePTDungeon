@@ -62,7 +62,8 @@ public enum PlayerWeaponKind
     RomanShield,
     BloodSickle, //Ã»¼ÒºÎ ³´
     HeavyBigSword,
-    Cannon
+    Cannon,
+    Stilleto
 }
 
 public class PlayerController : MonoBehaviour
@@ -88,6 +89,9 @@ public class PlayerController : MonoBehaviour
     [Header("Weapons")]
     [SerializeField] Transform weaponPosition;
     [SerializeField] List<WeaponBase> weapons = new List<WeaponBase>();
+
+    [SerializeField] Transform leftHand;
+    [SerializeField] List<TempWeapon> leftHandWeapons = new List<TempWeapon>();
 
     void Start()
     {
@@ -140,6 +144,13 @@ public class PlayerController : MonoBehaviour
         {
             weapons.Add(item);
         }
+
+        var _left_weapons = leftHand.GetComponentsInChildren<TempWeapon>();
+        leftHandWeapons.Clear();
+        foreach (var item in _left_weapons)
+        {
+            leftHandWeapons.Add(item);
+        }
     }
 
     void AnimationSetting()
@@ -149,6 +160,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack()
     {
+        SetWeapon();
         weapons[(int)weaponKind].OnAttack();
     }
 
@@ -159,6 +171,11 @@ public class PlayerController : MonoBehaviour
             item.gameObject.SetActive(false);
         }
         weapons[(int)weaponKind].gameObject.SetActive(true);
+
+        foreach (var item in leftHandWeapons)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
 
     public void InitKind()
@@ -179,6 +196,5 @@ public class PlayerController : MonoBehaviour
         attackKind = _attackKind;
         weaponKind = _weaponKind;
         IsAttack = true;
-        SetWeapon();
     }
 }
