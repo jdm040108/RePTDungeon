@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4482475, g: 0.49827433, b: 0.57558244, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482475, g: 0.49827462, b: 0.57558316, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -496,7 +496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -575, y: 98}
+  m_AnchoredPosition: {x: -574.99994, y: 98}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &294298796
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1520894792}
   m_HandleRect: {fileID: 1520894791}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2190,7 +2190,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2077484216}
   m_HandleRect: {fileID: 2077484215}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2889,7 +2889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -575, y: 98}
+  m_AnchoredPosition: {x: -574.99994, y: 98}
   m_SizeDelta: {x: 575, y: 778.05}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1843463643
@@ -4879,6 +4879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08630f35d50ae0b49ac35fb8fa9f92f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StopPosZ: 15.38
   dotDeal_Delay: 0
 --- !u!1 &1980603080917371
 GameObject:
@@ -6111,7 +6112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944628179211719}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 6.2577906, y: -0.119999886, z: -12.151802}
+  m_LocalPosition: {x: 6.5, y: -0.119999886, z: -12.151802}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4546682461085771}

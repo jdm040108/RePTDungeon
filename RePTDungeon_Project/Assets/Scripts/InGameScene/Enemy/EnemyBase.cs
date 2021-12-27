@@ -6,6 +6,7 @@ public abstract class EnemyBase : MonoBehaviour
 {
     Rigidbody rigid;
     Vector3 reactVec;
+    public float StopPosZ=15.38f;
 
     float Knockback;
     static bool isHit;
@@ -28,18 +29,7 @@ public abstract class EnemyBase : MonoBehaviour
      void Update()
     {
         DotDealLogic();
-        Debug.Log("dldldl");
-        reactVec = reactVec.normalized;
-        reactVec += Vector3.forward;
-        rigid.AddRelativeForce(reactVec * 0.5f, ForceMode.Acceleration);
-
-        if (isHit==true)
-        {
-            reactVec = reactVec.normalized;
-            reactVec += Vector3.back;
-            rigid.AddRelativeForce(reactVec * Knockback, ForceMode.Impulse);
-            isHit = false;
-        }
+        Move();
     }
 
      void DotDealLogic()
@@ -80,5 +70,27 @@ public abstract class EnemyBase : MonoBehaviour
         dotDeal_available = true;
         dotDeal_damage = damage;
         dotDeal_count = count;
+    }
+
+    public void Move()
+    {
+            Debug.Log(reactVec);
+        reactVec = reactVec.normalized;
+        if(gameObject.transform.position.z >= -StopPosZ)
+        {
+        reactVec += Vector3.forward;
+        rigid.AddRelativeForce(reactVec * 0.5f, ForceMode.Acceleration);
+        }
+        else
+        {
+            rigid.velocity = Vector3.zero;
+        }
+        if (isHit == true)
+        {
+            reactVec = reactVec.normalized;
+            reactVec += Vector3.back;
+            rigid.AddRelativeForce(reactVec * Knockback, ForceMode.Impulse);
+            isHit = false;
+        }
     }
 }
