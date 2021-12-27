@@ -4,6 +4,11 @@ using UnityEngine;
 
 public abstract class EnemyBase : MonoBehaviour
 {
+    Rigidbody rigid;
+    Vector3 reactVec;
+
+    float Knockback;
+    static bool isHit;
 
     protected float Hp;
 
@@ -14,17 +19,29 @@ public abstract class EnemyBase : MonoBehaviour
     float dotDeal_damage;
     int dotDeal_count;
 
-    void Start()
+     void Start()
     {
-        
+        rigid = GetComponent<Rigidbody>();
+        isHit = false;
     }
 
-    void Update()
+     void Update()
     {
-        DotDealLogic();
+        Debug.Log("dldldl");
+        reactVec = reactVec.normalized;
+        reactVec += Vector3.forward;
+        rigid.AddRelativeForce(reactVec * 0.5f, ForceMode.Acceleration);
+
+        if (isHit==true)
+        {
+            reactVec = reactVec.normalized;
+            reactVec += Vector3.back;
+            rigid.AddRelativeForce(reactVec * Knockback, ForceMode.Impulse);
+            isHit = false;
+        }
     }
 
-    void DotDealLogic()
+     void DotDealLogic()
     {
         if(dotDeal_available)
         {
@@ -46,9 +63,14 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    public void Damaged(float _damage, float drag /*¹Ð·Á³ª´Â Á¤µµ*/)
+    public void Damaged(float _damage, float drag /*ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½*/)
     {
         Hp -= _damage;
+        if (drag != 0)
+        {
+            Knockback = drag;
+            isHit = true;
+        }
         //damage effect
     }
 
